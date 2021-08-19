@@ -24,15 +24,15 @@ export default {
     signedIn () {
       return localStorage.signedIn
     },
-    // signOut () {
-    //   this.$http.secured.delete('/signin')
-    //     .then((response) => {
-    //       delete localStorage.csrf
-    //       delete localStorage.signedIn
-    //       this.$router.replace('/')
-    //     })
-    //     .catch(error => this.setError(error, 'Cannot sign out'))
-    // }
+    signOut () {
+      this.$http.secured.delete('/signin')
+        .then((response) => {
+          delete localStorage.csrf
+          delete localStorage.signedIn
+          this.$router.replace('/')
+        })
+        .catch(error => this.setError(error, 'Cannot sign out'))
+    }
   }
 }
 </script>
