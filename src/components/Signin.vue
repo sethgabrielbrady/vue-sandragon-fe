@@ -7,13 +7,13 @@
 
         <div class="mb-6">
           <label for="email" class="label">E-mail Address</label>
-          <input type="email" v-model="email" class="input" id="email" placeholder="andy@web-crunch.com">
+          <input type="email" v-model="email" class="input" id="email" placeholder="Email">
         </div>
         <div class="mb-6">
           <label for="password" class="label">Password</label>
           <input type="password" v-model="password" class="input" id="password" placeholder="Password">
         </div>
-        <button type="submit">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
           Sign In
         </button>
         <div class="my-4">
@@ -68,7 +68,8 @@ export default {
     checkSignedIn () {
       if (localStorage.signedIn) {
         alert("signed in");
-        this.$router.replace('/elements')
+        // this.$router.replace('/elements')
+        this.$router.go('/elements')
       }
     }
   }
