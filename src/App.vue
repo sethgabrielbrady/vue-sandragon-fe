@@ -15,6 +15,14 @@ export default {
   },
   created() {
     console.log('local', localStorage.signin)
+    this.checkSignedIn()
+  },
+  methods: {
+    checkSignedIn () {
+      if (localStorage.signedIn) {
+        console.log("signed in");
+      }
+    }
   }
 }
 </script>
