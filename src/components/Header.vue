@@ -27,6 +27,7 @@ export default {
     signOut () {
       this.$http.secured.delete('/signin')
         .then((response) => {
+          console.log(response)
           delete localStorage.csrf
           delete localStorage.signedIn
           this.$router.replace('/')
