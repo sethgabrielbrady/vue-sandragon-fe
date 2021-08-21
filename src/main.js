@@ -4,10 +4,11 @@ import router from './router.js';
 import VueAxios from 'vue-axios'
 import { securedAxiosInstance, plainAxiosInstance } from './backend/axios'
 import Router from 'vue-router'
+import Vuex from 'vuex'
 import './assets/tailwind.css'
 
-
 Vue.use(Router);
+Vue.use(Vuex);
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, {
