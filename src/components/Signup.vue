@@ -49,7 +49,8 @@ export default {
      signup () {
      this.$http.plain.post('/signup', {
         email: this.email,
-        password: this.password
+        password: this.password,
+        password_confirmation: this.password_confirmation
       })
         .then(response => this.signupSuccessful(response))
         .catch(error => this.signupFailed(error))
@@ -72,7 +73,6 @@ export default {
     },
     checkedSignedIn () {
       if (localStorage.signedIn) {
-        alert("signed in");
         this.$router.replace('/elements')
       }
     }

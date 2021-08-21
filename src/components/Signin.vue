@@ -58,7 +58,8 @@ export default {
       localStorage.csrf = response.data.csrf
       localStorage.signedIn = true
       this.error = ''
-      this.$router.replace('/elements')
+      // this.$router.replace('/elements')
+      this.$router.go('/elements')
     },
     signinFailed (error) {
       this.error = (error.response && error.response.data && error.response.data.error) || ''
@@ -67,9 +68,7 @@ export default {
     },
     checkSignedIn () {
       if (localStorage.signedIn) {
-        alert("signed in");
-        // this.$router.replace('/elements')
-        this.$router.go('/elements')
+        this.$router.replace('/elements')
       }
     }
   }
