@@ -4,6 +4,7 @@ import router from './router.js';
 import VueAxios from 'vue-axios'
 import { securedAxiosInstance, plainAxiosInstance } from './backend/axios'
 import Router from 'vue-router'
+import './assets/tailwind.css'
 
 
 Vue.use(Router);
