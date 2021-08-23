@@ -18,6 +18,14 @@ const plainAxiosInstance = axios.create({
   }
 })
 
+const uploadAxiosInstance = axios.create({
+  baseURL: API_URL,
+  withCredentials: false,
+  headers: {
+    'Content-Type': 'multipart/form-data'
+  }
+})
+
 securedAxiosInstance.interceptors.request.use(config => {
   const method = config.method.toUpperCase()
   if (method !== 'OPTIONS' && method !== 'GET') {
@@ -52,4 +60,4 @@ securedAxiosInstance.interceptors.response.use(null, error => {
   }
 })
 
-export { securedAxiosInstance, plainAxiosInstance }
+export { securedAxiosInstance, plainAxiosInstance, uploadAxiosInstance }
