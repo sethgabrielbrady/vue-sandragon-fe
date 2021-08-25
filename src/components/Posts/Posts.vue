@@ -5,6 +5,7 @@
 
     <ul class="list-reset mt-4">
       <li class="py-4" v-for="post in posts" :key="post.id" :post="post">
+        <p> ID: {{ post.id }}</p>
 
         <div class="flex items-center justify-between flex-wrap">
           <p class="block flex-1 font-mono font-semibold flex items-center ">

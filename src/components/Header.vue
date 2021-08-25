@@ -5,7 +5,8 @@
         <router-link to="/posts" class="text-white px-2 no-underline">Posts</router-link>
         <router-link to="/signin" class="text-white px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
         <router-link to="/signup" class="text-white px-2 no-underline" v-if="!signedIn()">Sign Up</router-link>
-        <router-link to="/elements" class="text-white px-2 no-underline" v-if="signedIn()">Elements</router-link>
+        <router-link to="/materials" class="text-white px-2 no-underline" v-if="signedIn()">Materials</router-link>
+        <router-link to="/upload" class="text-white px-2 no-underline" v-if="signedIn()">Upload</router-link>
         <a href="#" @click.prevent="signOut" class="text-white px-2 no-underline" v-if="signedIn()">Sign out</a>
       </div>
     </div>
