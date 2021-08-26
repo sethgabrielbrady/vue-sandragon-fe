@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'Elements',
+  name: 'edit',
   // Here is the data we get from our HTML Form.
   data () {
     return {
