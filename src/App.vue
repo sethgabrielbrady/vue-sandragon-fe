@@ -14,7 +14,6 @@ export default {
     Header
   },
   created() {
-    console.log('local', localStorage.signin)
     this.checkSignedIn()
   },
   methods: {

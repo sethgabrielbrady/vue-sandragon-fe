@@ -43,7 +43,7 @@ export default {
 
       event.preventDefault
       if(this.inputPicture){
-        this.$http.upload.patch(`/materials/${this.materialId}`, formData)
+        this.$http.uploadFile.patch(`/materials/${this.materialId}`, formData)
       }
 
       this.$http.plain.patch(`/materials/${this.materialId}`, {
