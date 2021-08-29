@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  //This should be changed to some sort of admin view
   name: 'Elements',
   // Here is the data we get from our HTML Form.
   data () {
@@ -26,7 +27,6 @@ export default {
 
     // Collecting everything inside our FormData object
     createItem: function() {
-      console.log(this.inputPicture)
       const params = {
         'image': this.inputPicture
       }

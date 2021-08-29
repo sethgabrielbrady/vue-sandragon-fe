@@ -1,5 +1,6 @@
 <template>
-  <div class="p-4">
+  <div class="p-4 text-center">
+    <h1>Post Edit View</h1>
     <div class="mx-auto border w-1/5 text-center p-4">
       <form>
         <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
@@ -10,9 +11,9 @@
 </template>
 
 <script>
+//Here I need to store post data into state, maybe?
 export default {
-  name: 'edit',
-  // Here is the data we get from our HTML Form.
+  name: 'Edit',
   data () {
     return {
       inputPicture: null

@@ -13,8 +13,14 @@
             {{ post.title }}
           </p>
 
-          <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
-         @click.prevent="removepost(post)">Delete</button>
+
+          <router-link :to="`/posts/edit/${post.id}`" class="mx-2" v-if="signedIn()">
+            Edit
+          </router-link>
+          <button
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            @click.prevent="removepost(post)">Delete
+          </button>
         </div>
 
         <!-- <div v-if="post == editedpost">
@@ -51,6 +57,9 @@ export default {
     }
   },
   methods: {
+    signedIn () {
+      return localStorage.signedIn
+    },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     }

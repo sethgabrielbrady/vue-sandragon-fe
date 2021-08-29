@@ -18,7 +18,7 @@ const plainAxiosInstance = axios.create({
   }
 })
 
-const uploadAxiosInstance = axios.create({
+const uploadFileAxiosInstance = axios.create({
   baseURL: API_URL,
   withCredentials: false,
   headers: {
@@ -60,4 +60,4 @@ securedAxiosInstance.interceptors.response.use(null, error => {
   }
 })
 
-export { securedAxiosInstance, plainAxiosInstance, uploadAxiosInstance }
+export { securedAxiosInstance, plainAxiosInstance, uploadFileAxiosInstance }
