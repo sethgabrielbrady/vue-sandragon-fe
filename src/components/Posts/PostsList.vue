@@ -1,26 +1,13 @@
 <template>
-  <div class="max-w-md m-auto py-10">
-
-    <hr class="border border-grey-light my-6" />
-
+  <div class="max-w-4xl m-auto py-10">
     <ul class="list-reset mt-4">
       <li class="py-4" v-for="post in posts" :key="post.id" :post="post">
-        <p> ID: {{ post.id }}</p>
-
         <div class="flex items-center justify-between flex-wrap">
+          <img :src="post.image_url" class="mx-1 border" width="50%" height="auto" />
           <p class="block flex-1 font-mono font-semibold flex items-center ">
-            <img :src="post.image_url" class="mx-1 border" width="20px" height="20px" />
-            {{ post.title }}
+            {{ post.title }}<br>
+            by: {{ post.author }}
           </p>
-
-
-          <router-link :to="`/posts/edit/${post.id}`" class="mx-2" v-if="signedIn()">
-            Edit
-          </router-link>
-          <button
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            @click.prevent="removepost(post)">Delete
-          </button>
         </div>
 
         <!-- <div v-if="post == editedpost">
@@ -31,6 +18,16 @@
             </div>
           </form>
         </div> -->
+        <div class="flex flex-row justify-between flex-end py-2">
+          <router-link :to="`/posts/edit/${post.id}`" class="mx-2 block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block" v-if="signedIn()">
+            Edit
+          </router-link>
+          <button
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block"
+            @click.prevent="removepost(post)">Delete
+          </button>
+        </div>
+        <hr class="border border-grey-light my-6" />
       </li>
     </ul>
   </div>

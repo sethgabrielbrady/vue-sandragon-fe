@@ -6,7 +6,7 @@ import PostsList from '@/components/Posts/PostsList'
 import Edit from '@/components/Posts/Edit'
 import Materials from '@/components/Materials/Materials'
 import editor from '@/components/Materials/editor'
-import Upload from '@/components/Upload'
+import Admin from '@/components/Admin'
 
 
 export default new Router({
@@ -21,6 +21,6 @@ export default new Router({
     {path: '/materials/:id', component: Materials,  children: [
       {path: 'editor', component: editor}
     ]},
-    {path: '/upload', name:'Upload', component: Upload}
+    {path: '/admin', name:'Admin', component: Admin}
   ]
 })
