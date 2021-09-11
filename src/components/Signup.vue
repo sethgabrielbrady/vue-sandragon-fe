@@ -60,20 +60,14 @@ export default {
         this.signupFailed(response)
         return
       }
-
-      localStorage.csrf = response.data.csrf
-      localStorage.signedIn = true
-      this.error = ''
-      this.$router.replace('/elements')
     },
     signupFailed (error) {
-      this.error = (error.response && error.response.data && error.response.data.error) || 'Something went wrong'
-      delete localStorage.csrf
-      delete localStorage.signedIn
+      this.error = (error.response && error.response.data && error.response.data.error) || ''
+      this.$store.commit('unsetCurrentUser')
     },
     checkedSignedIn () {
-      if (localStorage.signedIn) {
-        this.$router.replace('/elements')
+      if (this.$store.state.signedIn) {
+        this.$router.replace('/')
       }
     }
   }

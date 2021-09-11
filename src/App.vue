@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     checkSignedIn () {
-      if (localStorage.signedIn) {
-        console.log("signed in");
+      if (this.$store.state.signedIn) {
+       console.log(" store state signed in");
       }
     }
   }

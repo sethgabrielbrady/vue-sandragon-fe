@@ -8,7 +8,6 @@ import Materials from '@/components/Materials/Materials'
 import editor from '@/components/Materials/editor'
 import Admin from '@/components/Admin'
 
-
 export default new Router({
   mode: 'history',
   routes: [

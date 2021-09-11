@@ -42,7 +42,7 @@ export default {
     this.checkSignedIn()
   },
   methods: {
-     signin () {
+    signin () {
       this.$http.plain.post('/signin', {
         email: this.email,
         password: this.password
@@ -55,18 +55,23 @@ export default {
         this.signinFailed(response)
         return
       }
-      localStorage.csrf = response.data.csrf
-      localStorage.signedIn = true
-      this.error = ''
-      this.$router.go('/')
+      console.log(response)
+      this.$http.plain.get('/me')
+        .then(meResponse => {
+          console.log("me rsponse", meResponse)
+          this.$store.commit('setCurrentUser', { currentUser: meResponse.data, csrf: response.data.csrf })
+          this.error = ''
+          this.$router.go('/')
+        })
+        .catch(error => this.signinFailed(error))
     },
     signinFailed (error) {
+      console.log("me error", error)
       this.error = (error.response && error.response.data && error.response.data.error) || ''
-      delete localStorage.csrf
-      delete localStorage.signedIn
+      this.$store.commit('unsetCurrentUser')
     },
     checkSignedIn () {
-      if (localStorage.signedIn) {
+      if (this.$store.state.signedIn) {
         this.$router.replace('/')
       }
     }

@@ -1,10 +1,12 @@
 import axios from 'axios'
+import { store } from './../../store'
 
 const API_URL = 'http://localhost:3000'
 
 const securedAxiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: false,
+  withCredentials: true,
+  // withCredentials: false,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -12,7 +14,8 @@ const securedAxiosInstance = axios.create({
 
 const plainAxiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: false,
+  withCredentials: true,
+  // withCredentials: false,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -31,7 +34,7 @@ securedAxiosInstance.interceptors.request.use(config => {
   if (method !== 'OPTIONS' && method !== 'GET') {
     config.headers = {
       ...config.headers,
-      'X-CSRF-TOKEN': localStorage.csrf
+      'X-CSRF-TOKEN': store.state.csrf
     }
   }
   return config
@@ -40,17 +43,16 @@ securedAxiosInstance.interceptors.request.use(config => {
 securedAxiosInstance.interceptors.response.use(null, error => {
   if (error.response && error.response.config && error.response.status === 401) {
     // If 401 by expired access cookie, we do a refresh request
-    return plainAxiosInstance.post('/refresh', {}, { headers: { 'X-CSRF-TOKEN': localStorage.csrf } })
+    return plainAxiosInstance.post('/refresh', {}, { headers: { 'X-CSRF-TOKEN': store.state.csrf } })
       .then(response => {
-        localStorage.csrf = response.data.csrf
-        localStorage.signedIn = true
+        store.commit('refresh', response.data.csrf)
         // After another successfull refresh - repeat original request
         let retryConfig = error.response.config
-        retryConfig.headers['X-CSRF-TOKEN'] = localStorage.csrf
+        // retryConfig.headers['X-CSRF-TOKEN'] = response.data.csrf
+        retryConfig.headers['X-CSRF-TOKEN'] = store.state.csrf
         return plainAxiosInstance.request(retryConfig)
       }).catch(error => {
-        delete localStorage.csrf
-        delete localStorage.signedIn
+        store.commit('unsetCurrentUser')
         // redirect to signin if refresh fails
         location.replace('/')
         return Promise.reject(error)
