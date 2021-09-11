@@ -24,17 +24,20 @@ export default {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },
     signedIn () {
-      return localStorage.signedIn
+      // alert("Vuex store", this.$store.state.signedIn)
+      return this.$store.state.signedIn
     },
     signOut () {
       this.$http.secured.delete('/signin')
         .then((response) => {
-          console.log(response)
-          delete localStorage.csrf
-          delete localStorage.signedIn
+          console.log(response);
+          this.$store.commit('unsetCurrentUser')
           this.$router.replace('/')
         })
         .catch(error => this.setError(error, 'Cannot sign out'))
+    },
+    showAdminLink () {
+      return this.$store.getters.isAdmin || this.$store.getters.isManager
     }
   }
 }

@@ -45,7 +45,7 @@ export default {
     }
   },
   created () {
-    if (!localStorage.signedIn) {
+    if (!this.$store.state.signedIn) {
       this.$router.replace('/')
     } else {
       this.$http.secured.get('/posts')
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     signedIn () {
-      return localStorage.signedIn
+      return this.$store.state.signedIn
     },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
