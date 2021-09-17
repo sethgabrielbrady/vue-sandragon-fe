@@ -15,13 +15,6 @@ export default {
   },
   created() {
     this.checkSignedIn()
-  },
-  methods: {
-    checkSignedIn () {
-      if (this.$store.state.signedIn) {
-       console.log(" store state signed in");
-      }
-    }
   }
 }
 </script>

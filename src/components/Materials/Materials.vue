@@ -31,6 +31,9 @@ export default {
     }
   },
   created () {
+    if (!this.$store.state.signedIn || this.$store.state.currentUser.role !== "admin") {
+      this.$router.replace('/');
+    }
     this.$http.secured.get('/materials')
       .then(response => { this.materials = response.data})
       .catch(error => this.setError(error, 'Something went wrong'))

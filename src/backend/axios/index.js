@@ -48,8 +48,8 @@ securedAxiosInstance.interceptors.response.use(null, error => {
         store.commit('refresh', response.data.csrf)
         // After another successfull refresh - repeat original request
         let retryConfig = error.response.config
-        // retryConfig.headers['X-CSRF-TOKEN'] = response.data.csrf
-        retryConfig.headers['X-CSRF-TOKEN'] = store.state.csrf
+        retryConfig.headers['X-CSRF-TOKEN'] = response.data.csrf
+        // retryConfig.headers['X-CSRF-TOKEN'] = store.state.csrf
         return plainAxiosInstance.request(retryConfig)
       }).catch(error => {
         store.commit('unsetCurrentUser')
