@@ -45,7 +45,7 @@ export default {
     }
   },
   created () {
-    if (!this.$store.state.signedIn) {
+    if (!this.$store.state.signedIn || this.$store.state.currentUser.role !== "admin") {
       this.$router.replace('/')
     } else {
       this.$http.secured.get('/posts')

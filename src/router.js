@@ -7,10 +7,13 @@ import Edit from '@/components/Posts/edit'
 import Materials from '@/components/Materials/Materials'
 import editor from '@/components/Materials/editor'
 import Admin from '@/components/Admin'
+import Homepage from '@/components/Homepage'
 
 export default new Router({
   mode: 'history',
   routes: [
+    {path: '/', name:'Homepage', component: Homepage},
+    {path: '/homepage', redirect: { name: 'Homepage' }},
     {path: '/signin', name: 'Signin', component: Signin},
     {path: '/signup', name: 'Signup', component: Signup},
     {path: '/elements', name: 'Elements', component: Elements},

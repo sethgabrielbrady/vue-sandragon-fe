@@ -31,7 +31,11 @@ export default {
       title: "New Test",
       body: "Body test",
       author: " Author test"
-
+    }
+  },
+  created() {
+    if (!this.$store.state.signedIn || this.$store.state.currentUser.role !== "admin") {
+      this.$router.replace('/');
     }
   },
   methods: {
