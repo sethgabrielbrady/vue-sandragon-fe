@@ -12,9 +12,9 @@ export default {
   name: 'App',
   components: {
     Header
-  },
-  created() {
-    this.checkSignedIn()
   }
+  // created() {
+  //   this.checkSignedIn()
+  // }
 }
 </script>

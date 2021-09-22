@@ -22,6 +22,11 @@ export default {
       description: "Description test"
     }
   },
+  created () {
+    if(!this.$store.getters.isAdmin){
+      this.$router.replace('/')
+    }
+  },
   methods: {
     uploadFile: function() {
       this.inputPicture = this.$refs.inputFile.files[0];
@@ -35,11 +40,6 @@ export default {
       Object.entries(params).forEach(
         ([key, value]) => formData.append(key, value)
       )
-
-      //Check values of formData
-      // formData.forEach((value, key) => {
-      //   console.log("key %s: value %s", key, value);
-      // })
 
       event.preventDefault
       if(this.inputPicture){
