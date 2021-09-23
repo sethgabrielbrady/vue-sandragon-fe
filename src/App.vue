@@ -13,8 +13,5 @@ export default {
   components: {
     Header
   }
-  // created() {
-  //   this.checkSignedIn()
-  // }
 }
 </script>

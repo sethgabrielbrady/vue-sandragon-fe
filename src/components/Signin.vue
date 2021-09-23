@@ -4,7 +4,6 @@
       <h3 class="text-2xl mb-6 text-grey-darkest">Sign In</h3>
       <form @submit.prevent="signin">
         <div class="text-red" v-if="error">{{ error }}</div>
-
         <div class="mb-6">
           <label for="email" class="label">E-mail Address</label>
           <input type="email" v-model="email" class="input" id="email" placeholder="Email">
@@ -17,7 +16,11 @@
           Sign In
         </button>
         <div class="my-4">
-          <router-link to="/signup" class="link-grey">Sign up</router-link>
+          <router-link to="/signup" class="text-white no-underline">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+             Sign Up
+            </button>
+          </router-link>
         </div>
       </form>
     </div>
