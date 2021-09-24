@@ -21,7 +21,7 @@
         <div class="dropdown">
           <p class="inline-block text-white">{{this.$store.state.currentUser.email}}</p>
           <div class="dropdown-content">
-            <a  @click.prevent="signOut" class="text-white px-2 no-underline" v-if="signedIn()">Sign out</a>
+            <a  @click.prevent="signOut" class="text-white px-2 no-underline" v-if="signedIn()" style="cursor:pointer;">Sign out</a>
           </div>
         </div>
       </div>
