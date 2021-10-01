@@ -15,7 +15,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">Post Image</label>
         <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
         <br>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click=createItem>Upload</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click=createItem()>Upload</button>
       </form>
     </div>
   </div>
@@ -28,21 +28,21 @@ export default {
     return {
       inputPicture: null,
       postId: 1,
-      title: "New Test",
-      body: "Body test",
-      author: " Author test"
+      title: "New Test 4",
+      body: "Body test 4",
+      author: " Author test 4"
     }
   },
   created() {
-    if (!this.$store.state.signedIn || this.$store.state.currentUser.role !== "admin") {
-      this.$router.replace('/');
+     if(!this.$store.getters.isAdmin){
+      this.$router.replace('/')
     }
   },
   methods: {
     uploadFile: function() {
       this.inputPicture = this.$refs.inputFile.files[0];
     },
-    createItem: function(event) {
+    createItem: function() {
       const params = {
         'image': this.inputPicture
       }
@@ -52,8 +52,7 @@ export default {
         ([key, value]) => formData.append(key, value)
       )
 
-      event.preventDefault
-      if(this.inputPicture === true){
+      if(this.inputPicture){
         this.$http.uploadFile.patch(`/posts/${this.postId}`, formData)
       }
 
