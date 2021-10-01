@@ -31,7 +31,7 @@ export default {
     uploadFile: function() {
       this.inputPicture = this.$refs.inputFile.files[0];
     },
-    createItem: function(event) {
+    createItem: function() {
       const params = {
         'image': this.inputPicture
       }
@@ -41,7 +41,6 @@ export default {
         ([key, value]) => formData.append(key, value)
       )
 
-      event.preventDefault
       if(this.inputPicture){
         this.$http.uploadFile.patch(`/materials/${this.materialId}`, formData)
       }

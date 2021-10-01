@@ -10,14 +10,7 @@
           </p>
         </div>
 
-        <!-- <div v-if="post == editedpost">
-          <form action="" @submit.prevent="updatepost(post)">
-            <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
-              <input class="input" v-model="post.title" />
-              <input type="submit" value="Update" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
-            </div>
-          </form>
-        </div> -->
+
         <div class="flex flex-row justify-between flex-end py-2">
           <router-link :to="`/posts/edit/${post.id}`" class="mx-2 block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block" v-if="signedIn()">
             Edit
@@ -60,34 +53,6 @@ export default {
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     }
-    // addpost () {
-    //   const value = this.newpost
-    //   if (!value) {
-    //     return
-    //   }
-    //   this.$http.secured.post('/api/v1/posts/', { post: { name: this.newpost.name } })
-
-    //     .then(response => {
-    //       this.posts.push(response.data)
-    //       this.newpost = ''
-    //     })
-    //     .catch(error => this.setError(error, 'Cannot create post'))
-    // },
-    // removepost (post) {
-    //   this.$http.secured.delete(`/api/v1/posts/${post.id}`)
-    //     .then(response => {
-    //       this.posts.splice(this.posts.indexOf(post), 1)
-    //     })
-    //     .catch(error => this.setError(error, 'Cannot delete post'))
-    // },
-    // editpost (post) {
-    //   this.editedpost = post
-    // },
-    // updatepost (post) {
-    //   this.editedpost = ''
-    //   this.$http.secured.patch(`/api/v1/posts/${post.id}`, { post: { title: post.name } })
-    //     .catch(error => this.setError(error, 'Cannot update post'))
-    // }
   }
 }
 </script>
