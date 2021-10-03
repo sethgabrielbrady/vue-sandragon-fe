@@ -1,20 +1,23 @@
 <template>
-  <div class="max-w-md m-auto py-10">
+  <div class="max-w-4xl m-auto py-10 text-center">
     <h1>Materials</h1>
-    <ul class="list-reset mt-4">
-      <li class="py-4" v-for="material in materials" :key="material.id" :material="material">
-        <p> ID: {{ material.id }}</p>
+    <ul class="list-reset mt-4 items-center grid gap-4 grid-cols-3">
+      <li
+        class="p-2 border-solid border-2 border-purple-400 rounded-lg shadow-lg bg-blue-50 mx-3 h-80 cursor-pointer"
+        v-for="material in materials"
+        :key="material.id"
+        :material="material">
 
-        <div class="flex items-center justify-between flex-wrap">
-          <img :src="material.image_url" class="mx-1 border" width="200px" height="200px" />
-          <p class="block flex-1 font-mono font-semibold flex items-center ">
-          </p>
-          <p>{{ material.title }}</p>
-          <p>{{ material.description }}</p>
-
-          <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
-         @click.prevent="removepost(material)">Delete</button>
-        </div>
+          <div class="flex items-center justify-between flex-col">
+            <img :src="material.image_url" class="mx-1 border rounded-lg" width="200px" height="200px" />
+            <div class="block font-mono text-center">
+              <p class="font-semibold pt-3">{{ material.title }}</p>
+              <p class="text-sm">{{ material.id }}</p>
+            </div>
+            <!-- <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
+              @click.prevent="removepost(material)">Delete
+            </button> -->
+          </div>
       </li>
     </ul>
   </div>

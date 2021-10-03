@@ -7,6 +7,7 @@
           <p class="block flex-1 font-mono font-semibold flex items-center ">
             {{ post.title }}<br>
             by: {{ post.author }}
+            id: {{ post.id }}
           </p>
         </div>
 
