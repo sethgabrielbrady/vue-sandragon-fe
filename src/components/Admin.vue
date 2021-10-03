@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       inputPicture: null,
-      materialId: 1,
+      materialId: 8,
       title: "Title Test 13",
       description: "Description test"
     }
@@ -45,12 +45,12 @@ export default {
         this.$http.uploadFile.patch(`/materials/${this.materialId}`, formData)
       }
 
-      this.$http.plain.patch(`/materials/${this.materialId}`, {
-        material: {
-          title: this.title,
-          description: this.description,
-        }
-      })
+      // this.$http.plain.patch(`/materials/${this.materialId}`, {
+      //   material: {
+      //     title: this.title,
+      //     description: this.description,
+      //   }
+      // })
     }
   }
 }

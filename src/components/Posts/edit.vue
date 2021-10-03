@@ -27,10 +27,10 @@ export default {
   data () {
     return {
       inputPicture: null,
-      postId: 1,
-      title: "New Test 4",
-      body: "Body test 4",
-      author: " Author test 4"
+      postId: 2
+      // title: "New Test 4",
+      // body: "Body test 4",
+      // author: " Author test 4"
     }
   },
   created() {
@@ -56,13 +56,13 @@ export default {
         this.$http.uploadFile.patch(`/posts/${this.postId}`, formData)
       }
 
-      this.$http.plain.patch(`/posts/${this.postId}`, {
-        post: {
-          title: this.title,
-          body: this.body,
-          author: this.author,
-        }
-      })
+      // this.$http.plain.patch(`/posts/${this.postId}`, {
+      //   post: {
+      //     title: this.title,
+      //     body: this.body,
+      //     author: this.author,
+      //   }
+      // })
     }
   }
 }

@@ -7,6 +7,8 @@ import Router from 'vue-router'
 import Vuex from 'vuex'
 import { store } from './store'
 import './assets/tailwind.css'
+import './assets/css/sandragon.css'
+
 
 Vue.use(Router);
 Vue.use(Vuex);

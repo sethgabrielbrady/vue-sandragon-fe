@@ -1,6 +1,11 @@
 <template>
-  <header class="bg-gradient-to-br from-indigo-500 to-purple-600 py-4">
+  <header class="bg-gradient-to-br from-indigo-900 to-purple-700 py-4">
     <div class="container m-auto flex flex-wrap items-center justify-end">
+      <router-link to="/" class="text-white px-2 no-underline absolute" style="right: calc(100% - 3rem);">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sd-orange" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+        </svg>
+      </router-link>
       <div>
         <router-link to="/signin" class="text-white px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
         <div class="dropdown">
@@ -13,15 +18,15 @@
             </span>
           </a>
           <div class="dropdown-content">
-            <router-link to="/posts" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Posts</router-link>
-            <!-- Materials might be where we direct users to content -->
-            <router-link to="/materials" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Materials</router-link>
+            <router-link to="/posts" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Posts Edit</router-link>
           </div>
         </div>
-        <div class="dropdown">
+        <router-link to="/materials" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Materials</router-link>
+        <div class="dropdown rounded-lg">
           <p class="inline-block text-white">{{this.$store.state.currentUser.email}}</p>
           <div class="dropdown-content">
-            <a  @click.prevent="signOut" class="text-white px-2 no-underline" v-if="signedIn()" style="cursor:pointer;">Sign out</a>
+            <router-link to="user/id/account" class="text-white px-2 no-underline">Account</router-link>
+            <a @click.prevent="signOut" class="text-white px-2 no-underline" v-if="signedIn()" style="cursor:pointer;">Sign out</a>
           </div>
         </div>
       </div>

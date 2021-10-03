@@ -5,7 +5,7 @@ import Elements from '@/components/Elements'
 import PostsList from '@/components/Posts/PostsList'
 import Edit from '@/components/Posts/edit'
 import Materials from '@/components/Materials/Materials'
-import editor from '@/components/Materials/editor'
+import Editor from '@/components/Materials/editor'
 import Admin from '@/components/Admin'
 import Homepage from '@/components/Homepage'
 
@@ -20,9 +20,7 @@ export default new Router({
     {path: '/posts', name: 'PostsList', component: PostsList},
     {path: '/posts/edit/:id', name: Edit,  component: Edit },
     {path: '/materials', name: 'Materials', component: Materials},
-    {path: '/materials/:id', component: Materials,  children: [
-      {path: 'editor', component: editor}
-    ]},
+    {path: '/materials/editor/:id', name: Editor, component: Materials},
     {path: '/admin', name:'Admin', component: Admin}
   ]
 })
