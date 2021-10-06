@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm m-auto">
+  <div id="signin-modal" class="max-w-sm m-auto" v-if="this.toggle">
     <div class="p-4">
       <h3 class="text-2xl my-6 text-grey-darkest text-center">Welcome back!</h3>
       <form @submit.prevent="signin">
@@ -16,14 +16,17 @@
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" type="submit">
             Sign In
           </button>
-          <p class="text-center mt-4"> Not a member?</p>
-          <router-link to="/signup" class="text-white no-underline center flex justify-center">
-            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 ">
-             Sign Up
-            </button>
-          </router-link>
         </div>
       </form>
+      <p class="text-center mt-4"> Not a member?</p>
+      <router-link to="/signup" class="text-white no-underline center flex justify-center">
+        <button
+          class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2"
+           @click="toggleModal"
+        >
+          Sign Up
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -36,7 +39,8 @@ export default {
     return {
       email: '',
       password: '',
-      error: ''
+      error: '',
+      toggle: true
     }
   },
   created () {
@@ -78,6 +82,9 @@ export default {
       if (this.$store.state.signedIn) {
         this.$router.replace('/')
       }
+    },
+    toggleModal () {
+      this.toggle = !this.toggle;
     }
   }
 }
