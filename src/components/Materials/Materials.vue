@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-4xl m-auto py-10 text-center">
-    <h1>Materials</h1>
+    <h1 class="mt-4">Materials</h1>
     <ul class="list-reset mt-4 items-center grid gap-4 grid-cols-3">
       <li
         class="p-2 border-solid border-2 border-purple-400 rounded-lg shadow-lg bg-blue-50 mx-3 h-80 cursor-pointer"
