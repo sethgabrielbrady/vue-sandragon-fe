@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 ">
-    <h1 class="text-center p-4">Post Edit View</h1>
+    <h1 class="text-center p-4">Post Edit View for {{this.postId}}</h1>
     <div class="w-full max-w-5xl mx-auto">
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="title">Title</label>
@@ -27,20 +27,25 @@ export default {
   data () {
     return {
       inputPicture: null,
-      postId: 2
+      postId: null
       // title: "New Test 4",
       // body: "Body test 4",
       // author: " Author test 4"
     }
   },
   created() {
-     if(!this.$store.getters.isAdmin){
+    if(!this.$store.getters.isAdmin){
       this.$router.replace('/')
     }
+    this.postId = this.getId()
   },
   methods: {
     uploadFile: function() {
       this.inputPicture = this.$refs.inputFile.files[0];
+    },
+    getId(){
+      let url = window.location.href;
+      return url.slice(-1)
     },
     createItem: function() {
       const params = {
