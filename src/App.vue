@@ -4,6 +4,7 @@
       class="fixed rounded max-w-sm m-auto my-8 shadow"
       style="z-index: 4; background: white; transform: translate(calc(25vw + 50%), calc(25vh - 10%)); width:30%; height:auto;"
       v-if="toggle"
+      v-on-clickaway="toggleModal"
     >
       <Signin/>
     </div>
@@ -20,12 +21,16 @@
 <script>
 import Header from './components/Header.vue'
 import Signin from './components/Signin.vue'
+import {directive as onClickaway} from "vue-clickaway"
 
 export default {
   name: 'App',
   components: {
     Header,
     Signin
+  },
+  directives: {
+    onClickaway: onClickaway
   },
   data() {
     return {
