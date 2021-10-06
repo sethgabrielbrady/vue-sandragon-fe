@@ -1,17 +1,46 @@
 <template>
   <div id="app">
-    <Header/>
-    <router-view></router-view>
+    <div
+      class="fixed rounded max-w-sm m-auto my-8 shadow"
+      style="z-index: 4; background: white; transform: translate(calc(25vw + 50%), calc(25vh - 10%)); width:30%; height:auto;"
+      v-if="toggle"
+    >
+      <Signin/>
+    </div>
+    <Header @toggleSignin="toggleModal"/>
+    <div @toggleSignin="toggleModal" >
+      <router-view
+        class="py-12 router-view"
+      >
+      </router-view>
+    </div>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Signin from './components/Signin.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Signin
+  },
+  data() {
+    return {
+      toggle: false
+    }
+  },
+  methods: {
+    toggleModal () {
+      this.toggle = !this.toggle;
+    }
   }
 }
 </script>
+<style scoped>
+  .dimbackground {
+     filter: brightness(50%);
+  }
+</style>

@@ -9,7 +9,7 @@
           <p clas="inline-block">SANDRAGON</p>
         </router-link>
         <div>
-          <p class="text-white px-2 no-underline inline block" v-if="!signedIn()" @click="toggleModal()">Sign in</p>
+          <p class="text-white px-2 no-underline inline block" v-if="!signedIn()" @click="checkUrl">Sign in</p>
           <router-link to="/materials" class="text-white px-2 no-underline inline-block" v-if="signedIn() && showAdminLink()">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sd-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
@@ -27,18 +27,10 @@
         </div>
       </div>
     </header>
-    <div
-      class="fixed rounded max-w-sm m-auto my-8 shadow"
-      style="z-index: 4; background: white; transform: translate(calc(25vw + 50%), calc(25vh - 10%)); width:30%; height:auto;"
-      v-if="this.toggle"
-    >
-      <Signin />
-    </div>
   </div>
 </template>
 
 <script>
-import Signin from './Signin.vue'
 
 export default {
   name: 'Header',
@@ -46,9 +38,6 @@ export default {
     return {
       toggle: false
     }
-  },
-  components: {
-    Signin
   },
   created () {
     this.signedIn()
@@ -72,8 +61,12 @@ export default {
     showAdminLink () {
       return this.$store.getters.isAdmin
     },
-    toggleModal () {
-      this.toggle = !this.toggle;
+    checkUrl() {
+      if (window.location.href.indexOf("signin") > -1 || window.location.href.indexOf("signup") > -1) {
+        return
+      } else {
+        this.$emit('toggleSignin')
+      }
     }
   }
 }
