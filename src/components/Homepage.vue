@@ -1,16 +1,29 @@
 <template>
-  <div class="homepage-img flex flex-col justify-around">
-    <div class="text-center text-5xl text-white homepage-bold">
-      A new system that will bring
-      <br>remote players to the same
-      <br>virtual table top.
-    </div>
+  <div class="relative">
+    <img src="https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg" class="homepage-img" />
+    <div class="flex flex-col justify-between relative" style="z-index:2; height: 1000px;">
+      <div class="text-center text-5xl text-white homepage-bold py-6 mt-6 ">
+        A new system that will bring
+        <br>remote players to the same
+        <br>virtual table top.
+      </div>
+      <div class="text-center text-5xl text-white homepage-bold py-6">
+        A new system that will bring
+        <br>remote players to the same
+        <br>virtual table top.
+      </div>
+      <div class="text-center text-5xl text-white homepage-bold py-6">
+        A new system that will bring
+        <br>remote players to the same
+        <br>virtual table top.
+      </div>
 
-    <!-- <div class="list-reset mt-4">
-      <p class="py-4">
-        {{ post.body }}
-      </p>
-    </div> -->
+      <!-- <div class="list-reset mt-4">
+        <p class="py-4">
+          {{ post.body }}
+        </p>
+      </div> -->
+    </div>
   </div>
 </template>
 
@@ -40,9 +53,12 @@ export default {
 
 <style scoped>
   .homepage-img {
-    background-image: url('https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg');
-    background-size: cover;
-    height: calc(100vh - 30px);
+    /* background-image: url('https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg');
+    background-size: cover; */
+    height: auto;
+    position: fixed;
+    width: 100vw;
+    filter: brightness(50%);
   }
   .homepage-bold {
     font-weight: 600;
