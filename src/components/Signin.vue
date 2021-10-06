@@ -1,23 +1,24 @@
 <template>
-  <div class="max-w-sm m-auto my-8">
-    <div class="border p-10 border-grey-light shadow rounded">
-      <h3 class="text-2xl mb-6 text-grey-darkest">Sign In</h3>
+  <div class="max-w-sm m-auto">
+    <div class="p-4">
+      <h3 class="text-2xl my-6 text-grey-darkest text-center">Welcome back!</h3>
       <form @submit.prevent="signin">
         <div class="text-red" v-if="error">{{ error }}</div>
         <div class="mb-6">
-          <label for="email" class="label">E-mail Address</label>
-          <input type="email" v-model="email" class="input" id="email" placeholder="Email">
+          <label for="email" class="label" />
+          <input type="email" v-model="email" class="input border rounded p-2 w-full" id="email" placeholder="Email">
         </div>
         <div class="mb-6">
-          <label for="password" class="label">Password</label>
-          <input type="password" v-model="password" class="input" id="password" placeholder="Password">
+          <label for="password" class="label" />
+          <input type="password" v-model="password" class="input border rounded p-2 w-full" id="password" placeholder="Password">
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
-          Sign In
-        </button>
-        <div class="my-4">
-          <router-link to="/signup" class="text-white no-underline">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <div class="my-4 flex justify-center flex-col">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" type="submit">
+            Sign In
+          </button>
+          <p class="text-center mt-4"> Not a member?</p>
+          <router-link to="/signup" class="text-white no-underline center flex justify-center">
+            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 ">
              Sign Up
             </button>
           </router-link>
