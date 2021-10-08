@@ -10,10 +10,10 @@
           <input type="email" v-model="email" class="input border rounded p-2 w-full" id="email" placeholder="email">
         </div>
 
-        <!-- <div class="mb-6">
+        <div class="mb-6">
           <label for="username" class="label">username</label>
           <input type="username" v-model="username" class="input border rounded p-2 w-full" id="username" placeholder="username">
-        </div> -->
+        </div>
 
         <div class="mb-6">
           <label for="password" class="label">Password</label>
@@ -47,6 +47,7 @@ export default {
       email: '',
       password: '',
       password_confirmation: '',
+      username: '',
       error: ''
     }
   },
