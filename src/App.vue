@@ -15,11 +15,13 @@
       >
       </router-view>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import Header from './components/UI/Header.vue'
+import Footer from './components/UI/Footer.vue'
 import Signin from './components/Signin.vue'
 import {directive as onClickaway} from "vue-clickaway"
 
@@ -27,7 +29,8 @@ export default {
   name: 'App',
   components: {
     Header,
-    Signin
+    Signin,
+    Footer
   },
   directives: {
     onClickaway: onClickaway
