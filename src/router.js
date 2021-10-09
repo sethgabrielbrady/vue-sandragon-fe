@@ -8,6 +8,8 @@ import Materials from '@/components/Materials/Materials'
 import Editor from '@/components/Materials/editor'
 import Admin from '@/components/Admin'
 import Homepage from '@/components/Homepage'
+import About from '@/components/About'
+
 
 export default new Router({
   mode: 'history',
@@ -21,6 +23,7 @@ export default new Router({
     {path: '/posts/edit/:id', name: Edit,  component: Edit },
     {path: '/materials', name: 'Materials', component: Materials},
     {path: '/materials/editor/:id', name: Editor, component: Materials},
-    {path: '/admin', name:'Admin', component: Admin}
+    {path: '/admin', name:'Admin', component: Admin},
+    {path: '/about', name:'About', component: About}
   ]
 })
