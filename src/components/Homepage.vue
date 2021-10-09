@@ -17,7 +17,12 @@
         <br>remote players to the same
         <br>virtual table top.
       </div>
-
+      <div class="mx-auto  w-1/3 text-center p-4 fixed" style="transform:translate(calc(50vw - 16.5vw), 75vh">
+        <form class="flex flex-row shadow" style="opacity: 0.85;">
+          <input type="email" v-model="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 right-rounded">Email</button>
+        </form>
+      </div>
       <!-- <div class="list-reset mt-4">
         <p class="py-4">
           {{ post.body }}
