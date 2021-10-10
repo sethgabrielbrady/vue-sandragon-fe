@@ -45,7 +45,7 @@ export default {
   methods: {
     routeTo(materialId) {
       this.$store.commit('setMaterialId', materialId)
-      window.location = `/materials/info/${this.$store.state.materialId}`;
+      window.location = "/materials/info/";
     },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text

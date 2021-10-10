@@ -24,7 +24,7 @@ export default new Router({
     {path: '/posts/edit/:id', name: Edit,  component: Edit },
     {path: '/materials', name: 'Materials', component: Materials},
     {path: '/materials/editor/:id', name: Editor, component: Editor },
-    {path: '/materials/info/:id', name: Info, component: Info },
+    {path: '/materials/info/', name: Info, component: Info },
     {path: '/admin', name:'Admin', component: Admin},
     {path: '/about', name:'About', component: About}
   ]
