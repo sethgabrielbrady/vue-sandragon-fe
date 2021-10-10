@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
   state: {
     currentUser: {},
     signedIn: false,
-    csrf: null
+    csrf: null,
+    materialId: null
   },
   mutations: {
     setCurrentUser (state, { currentUser, csrf }) {
@@ -23,7 +24,10 @@ export const store = new Vuex.Store({
     refresh (state, csrf) {
       state.signedIn = true
       state.csrf = csrf
-    }
+    },
+    setMaterialId(state, materialId ) {
+      state.materialId = materialId
+    },
   },
   getters: {
     isAdmin (state) {
