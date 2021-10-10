@@ -11,7 +11,7 @@
     <Header @toggleSignin="toggleModal"/>
     <div @toggleSignin="toggleModal" >
       <router-view
-        class="py-12 router-view"
+        class="py-12 router-view" style="min-height:100vh;"
       >
       </router-view>
     </div>
@@ -47,7 +47,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
   .dimbackground {
      filter: brightness(50%);
   }

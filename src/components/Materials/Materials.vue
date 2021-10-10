@@ -12,15 +12,10 @@
             <img :src="material.image_url" class="mx-1 border rounded-lg" width="200px" height="200px" />
             <div class="block font-mono text-center">
               <p class="font-semibold pt-3">{{ material.title }}</p>
-              <p class="text-sm">{{ material.id }}</p>
             </div>
-            <!-- <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
-              @click.prevent="removepost(material)">Delete
-            </button> -->
           </div>
         </li>
     </ul>
-    <!-- <router-link :to="`/materials/info/${material.id}`"> -->
   </div>
 
 </template>
