@@ -21,7 +21,9 @@
           </router-link>
           <p class="text-white px-2 no-underline inline block" v-if="!signedIn()" @click="checkUrl">Sign in</p>
           <div class="dropdown rounded-lg" v-if="signedIn()">
-            <p class="inline-block text-white">{{this.$store.state.currentUser.username}}</p>
+            <p v-if="this.$store.state.currentUser.username" class="inline-block text-white">{{this.$store.state.currentUser.username}}</p>
+            <p v-else class="inline-block text-white">{{ this.$store.state.currentUser.email }}</p>
+
             <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" class="w-7 h-7 ml-2 bg-gray-900 rounded-full inline-block"/>
             <div class="dropdown-content">
               <router-link to="/posts" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Posts Edit</router-link>
