@@ -6,8 +6,8 @@
         class="p-2 border-solid border-2 border-purple-400 rounded-lg shadow-lg bg-blue-50 mx-3 h-80 cursor-pointer"
         v-for="material in materials"
         :key="material.id"
-        :material="material">
-
+        :material="material"
+        @click="routeTo(material.id)">
           <div class="flex items-center justify-between flex-col">
             <img :src="material.image_url" class="mx-1 border rounded-lg" width="200px" height="200px" />
             <div class="block font-mono text-center">
@@ -18,8 +18,9 @@
               @click.prevent="removepost(material)">Delete
             </button> -->
           </div>
-      </li>
+        </li>
     </ul>
+    <!-- <router-link :to="`/materials/info/${material.id}`"> -->
   </div>
 
 </template>
@@ -42,6 +43,10 @@ export default {
       .catch(error => this.setError(error, 'Something went wrong'))
   },
   methods: {
+    routeTo(materialId) {
+      this.$store.commit('setMaterialId', materialId)
+      window.location = `/materials/info/${this.$store.state.materialId}`;
+    },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     }

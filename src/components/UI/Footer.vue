@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <footer class="bg-gradient-to-br from-indigo-900 to-indigo-700 py-3" style=" position: relative; z-index: 3; width: 100%; bottom: 0px;">
+  <div class="relative">
+    <footer class="bg-gradient-to-br from-indigo-900 to-indigo-700 py-3" style=" position: absolute; z-index: 3; width: 100%; bottom: 0px;">
       <div class="container m-auto flex flex-wrap items-center justify-end">
         <a href="https://twitter.com/sandragongame" target="_blank"><img src="https://www.sandragon.io/static/media/twitter.6d0df318.png" alt="Twitter" class="h-7 w-7 sd-orange"></a>
         <a href="https://discord.gg/8U6VYbdgPf" target="_blank"><img src="https://www.sandragon.io/static/media/discord.25c69c3e.png" alt="Discord" class="h-7 w-7 sd-orange"></a>

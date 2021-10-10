@@ -2,7 +2,7 @@
   <div id="app">
     <div
       class="fixed rounded max-w-sm m-auto my-8 shadow"
-      style="z-index: 4; background: white; transform: translate(calc(25vw + 50%), calc(25vh - 10%)); width:30%; height:auto;"
+      style="z-index: 4; background: white; transform: translate(calc(25vw + 50%), calc(25vh - 10%)); width:30%; min-height:auto;"
       v-if="toggle"
       v-on-clickaway="toggleModal"
     >
