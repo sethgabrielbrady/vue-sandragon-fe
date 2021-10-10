@@ -1,7 +1,7 @@
 <template>
   <div class="items-center text-center py-20">
     <button
-      v-if="isAdmin"
+      v-if="isAdmin()"
       class="bg-transprent text-sm hover:bg-blue-400 text-blue hover:text-white no-underline font-bold py-2 px-4 rounded border border-blue-500"
       @click="routeTo"
       >
@@ -29,8 +29,6 @@ export default {
     this.$http.plain.get(`/materials/${this.materialId}`)
       .then(response => { this.material = response.data })
       .catch(error => this.setError(error, 'Something went wrong'))
-
-    console.log("material", this.material.image_url)
   },
   methods: {
     isAdmin() {

@@ -1,7 +1,7 @@
 <template>
   <div class="items-center text-center relative">
-    <div :class="{dimbackground: showModal}" class="bg-purple-100 py-20">
-      <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" @click="deleteItemCheck">Delete</button>
+    <div :class="{ dimbackground: showModal }" class="bg-purple-100 py-20">
+      <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" v-if="materialId"  @click="deleteItemCheck">Delete</button>
       <div class="mx-auto w-4/5 text-center p-4 ">
         <p class="bg-blue-200 rounded w-2/5 mx-auto py-2 text-blue-500 mb-12" style="font-size:2rem;">Material Editor</p>
         <form class="bg-white px-8 pt-6 pb-8 mb-4 shadow rounded">
@@ -19,7 +19,8 @@
             <textarea type="textarea" v-model="description" class="input border rounded p-2 w-full" id="body" :placeholder="material.description" />
           </div>
 
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="createItem">Update</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="(materialId === null)"  @click="createItem">Create</button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="materialId" @click="createItem">Update</button>
         </form>
       </div>
     </div>
@@ -47,16 +48,17 @@ export default {
     }
   },
   created () {
-    if (!this.$store.getters.isAdmin){
-      this.$router.replace('/')
-    }else {
+    if (!this.$store.state.signedIn && this.$store.state.currentUser.role !== "admin") {
+      this.$router.replace('/');
+    }else if(this.$store.state.materialId){
       this.materialId = this.$store.state.materialId
       this.$http.plain.get(`/materials/${this.materialId}`)
         .then(response => { this.material = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
-
       this.title = this.material.title
       this.description = this.material.description
+    }else {
+      return
     }
   },
   methods: {
@@ -84,18 +86,23 @@ export default {
         ([key, value]) => formData.append(key, value)
       )
 
-      if(this.inputPicture){
-        this.$http.uploadFile.patch(`/materials/${this.materialId}`, formData)
-      }
-
-      this.$http.plain.patch(`/materials/${this.materialId}`, {
-        material: {
+      if(this.materialId){
+        //upload an image
+        if(this.inputPicture){ this.$http.uploadFile.patch(`/materials/${this.materialId}`, formData) }
+        //then upload any other changes
+        this.$http.plain.patch(`/materials/${this.materialId}`, {
+          material: {
+            title: this.title,
+            description: this.description,
+          }
+        })
+      } else {
+        this.$http.plain.post("/materials/", {
           title: this.title,
           description: this.description,
-        }
-      })
-
-      window.location = "/materials/edit";
+        })
+      }
+      window.location = "/materials/editor";
     }
   }
 }
