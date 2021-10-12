@@ -10,6 +10,8 @@ import Info from '@/components/Materials/Info'
 import Admin from '@/components/Admin'
 import Homepage from '@/components/Homepage'
 import About from '@/components/About'
+import Contact from '@/components/Contact'
+import Privacy from '@/components/Privacy'
 
 
 export default new Router({
@@ -26,6 +28,8 @@ export default new Router({
     {path: '/materials/editor/', name: Editor, component: Editor },
     {path: '/materials/info/', name: Info, component: Info },
     {path: '/admin', name:'Admin', component: Admin},
-    {path: '/about', name:'About', component: About}
+    {path: '/about', name:'About', component: About},
+    {path: '/contact', name:'Contact', component: Contact},
+    {path: '/privacy-policy', name:'Privacy', component: Privacy}
   ]
 })
