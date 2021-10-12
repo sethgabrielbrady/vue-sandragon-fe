@@ -1,6 +1,18 @@
 <template>
   <div class="relative">
-    <img src="https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg" class="homepage-img" />
+    <img src="../assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1400.jpg" class="homepage-img" />
+    <!-- <img
+      class="homepage-img h-screen"
+      sizes="(max-width: 1400px) 100vw, 1400px"
+      srcset="
+      src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_200.jpg 200w,
+      src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_507.jpg 507w,
+      src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_722.jpg 722w,
+      src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_899.jpg 899w,
+      src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1274.jpg 1274w,
+      src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1400.jpg 1400w"
+      src="src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1400.jpg"
+      alt=""> -->
     <div class="flex flex-col justify-between relative" style="z-index:2; height: 1000px;">
       <div class="text-center text-5xl text-white homepage-bold py-6 mt-6 ">
         A new system that will bring
