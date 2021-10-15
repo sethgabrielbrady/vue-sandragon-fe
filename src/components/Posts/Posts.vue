@@ -6,8 +6,9 @@
           <img :src="post.image_url" class="mx-1 border" width="50%" height="auto" />
           <p class="block flex-1 font-mono font-semibold flex items-center ">
             {{ post.title }}<br>
-            by: {{ post.author }}
-            id: {{ post.id }}
+            by: {{ post.author }}<br>
+            id: {{ post.id }} <br>
+            date: {{ post.updated_at }}
           </p>
         </div>
 

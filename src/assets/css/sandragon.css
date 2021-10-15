@@ -3,6 +3,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color:  #ECEBE8;
+}
+
+header, footer {
+  background-color: #0F102F;
 }
 
 .sd-dark-blue {
@@ -11,4 +16,8 @@ body {
 
 .sd-orange {
   color: #ED7126
+}
+
+.bg-orange {
+  background: #ED7126;
 }

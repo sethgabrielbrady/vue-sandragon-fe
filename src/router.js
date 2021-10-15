@@ -1,7 +1,6 @@
 import Router from 'vue-router'
 import Signin from '@/components/Signin'
 import Signup from '@/components/Signup'
-import Elements from '@/components/Elements'
 import Posts from '@/components/Posts/Posts'
 import Edit from '@/components/Posts/edit'
 import Materials from '@/components/Materials/Materials'
@@ -21,10 +20,9 @@ export default new Router({
     {path: '/homepage', redirect: { name: 'Homepage' }},
     {path: '/signin', name: 'Signin', component: Signin},
     {path: '/signup', name: 'Signup', component: Signup},
-    {path: '/elements', name: 'Elements', component: Elements},
     {path: '/posts', name: 'Posts', component: Posts},
     {path: '/posts/edit/:id', name: Edit,  component: Edit },
-    {path: '/materials', name: 'Materials', component: Materials},
+    {path: '/content', name: 'Materials', component: Materials},
     {path: '/materials/editor/', name: Editor, component: Editor },
     {path: '/materials/info/', name: Info, component: Info },
     {path: '/admin', name:'Admin', component: Admin},

@@ -3,3 +3,24 @@
 @tailwind components;
 
 @tailwind utilities;
+
+
+/* Add the lines below */
+@layer utilities {
+  @variants responsive {
+    .masonry {
+      column-count: 3;
+      column-gap: .5em;
+    }
+    .break-inside {
+      break-inside: avoid;
+      margin: .5em 0;
+      background-color: #0F102F !important;
+      color: white;
+    }
+    .break-inside:hover {
+      background-color: #ED7126 !important;
+      color: #0F102F !important;
+    }
+  }
+}

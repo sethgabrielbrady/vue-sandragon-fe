@@ -1,6 +1,5 @@
 <template>
-  <div class="max-w-4xl m-auto py-10 text-center">
-    <h1 class="mt-4">Materials</h1>
+  <div class="max-w-4xl m-auto py-10 mb-24 text-center relative">
     <button
       v-if="isAdmin()"
       class="bg-transprent text-sm hover:bg-blue-400 text-blue hover:text-white no-underline font-bold py-2 px-4 rounded border border-blue-500"
@@ -8,18 +7,25 @@
       >
         Add Material
     </button>
-    <ul class="list-reset mt-4 items-center grid gap-4 grid-cols-3">
+    <div
+      v-if="materials.length < 1"
+    >
+      <Loading />
+    </div>
+    <ul
+      v-else
+      class="list-reset mt-4 masonry"
+    >
       <li
-        class="p-2 border-solid border-2 border-purple-400 rounded-lg shadow-lg bg-blue-50 mx-3 h-80 cursor-pointer"
+        class="break-inside rounded-lg shadow-lg cursor-pointer relative"
         v-for="material in materials"
         :key="material.id"
         :material="material"
         @click="setMaterial(material.id)">
-          <div class="flex items-center justify-between flex-col">
-            <img :src="material.image_url" class="mx-1 border rounded-lg" width="200px" height="200px" />
-            <div class="block font-mono text-center">
-              <p class="font-semibold pt-3">{{ material.title }}</p>
-            </div>
+          <img :src="material.image_url" class="border rounded-lg mason-image" style="object-fit: contain;" />
+          <div class="text-center absolute p-4 w-full" style="top: 10%; overflow:hidden;">
+            <p class="font-semibold pt-3 text-center relative mason-title">{{ material.title }}</p>
+            <p class="font-semibold pt-3 mason-text text-center relative" style="font-size: .75rem;">{{ teaser(material.description) }}...</p>
           </div>
         </li>
     </ul>
@@ -28,8 +34,13 @@
 </template>
 
 <script>
+import Loading from '../UI/Loading.vue'
+
 export default {
   name: 'Materials',
+  components: {
+    Loading
+  },
   data () {
     return {
       materials: [],
@@ -58,7 +69,37 @@ export default {
     },
     routeTo(route){
       window.location = route;
+    },
+    teaser(text) {
+      console.log("teaser", text.slice(0,60))
+      return text.slice(0, 60)
     }
   }
 }
 </script>
+<style scoped>
+
+.mason-title {
+  color: white;
+}
+
+.mason-text {
+  opacity: 0;
+}
+
+.break-inside:hover > .text-center > .mason-text {
+  opacity: 1 !important;
+  color: white;
+}
+.mason-image {
+  filter: brightness(70%);
+}
+.break-inside:hover > .mason-image {
+  filter: brightness(30%);
+}
+
+.loading {
+  background-color: #0F102F;
+  color: #ED7126;
+}
+</style>
