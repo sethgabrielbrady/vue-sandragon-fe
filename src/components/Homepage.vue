@@ -36,13 +36,13 @@
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 right-rounded">Email</button>
         </form>
       </div>
-      <!-- <div class="list-reset mt-4">
+      <div class="list-reset mt-4">
         <div class="text-center text-1xl text-white homepage-bold py-6 mt-6 w-3/5 m-auto rounded-md shadow" style="transform:translateY(50%) !important;">
           <p class="py-4">
             {{ post.body }}
           </p>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
