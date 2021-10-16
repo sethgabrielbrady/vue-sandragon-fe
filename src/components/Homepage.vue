@@ -36,11 +36,12 @@
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 right-rounded">Email</button>
         </form>
       </div>
-
       <!-- <div class="list-reset mt-4">
-        <p class="py-4">
-          {{ post.body }}
-        </p>
+        <div class="text-center text-1xl text-white homepage-bold py-6 mt-6 w-3/5 m-auto rounded-md shadow" style="transform:translateY(50%) !important;">
+          <p class="py-4">
+            {{ post.body }}
+          </p>
+        </div>
       </div> -->
     </div>
   </div>
@@ -56,9 +57,7 @@ export default {
     }
   },
   created () {
-    console.log(this.$store.state.csrf)
-
-    this.$http.plain.get('/posts/3')
+    this.$http.plain.get('/posts/4')
       .then(response => { this.post = response.data})
       .catch(error => this.setError(error, 'Something went wrong'))
   },
@@ -70,7 +69,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped style="sass">
   .homepage-img {
     /* background-image: url('https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg');
     background-size: cover; */
