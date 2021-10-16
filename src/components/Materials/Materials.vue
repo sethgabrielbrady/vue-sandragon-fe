@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-4xl m-auto py-10 mb-24 text-center relative">
+  <div class="max-w-4xl m-auto  text-center relative">
     <button
       v-if="isAdmin()"
       class="bg-transprent text-sm hover:bg-blue-400 text-blue hover:text-white no-underline font-bold py-2 px-4 rounded border border-blue-500"
@@ -14,7 +14,7 @@
     </div>
     <ul
       v-else
-      class="list-reset mt-4 masonry"
+      class="list-reset mt-12 masonry"
     >
       <li
         class="break-inside rounded-lg shadow-lg cursor-pointer relative"
