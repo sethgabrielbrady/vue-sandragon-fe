@@ -8,7 +8,8 @@
             {{ post.title }}<br>
             by: {{ post.author }}<br>
             id: {{ post.id }} <br>
-            date: {{ post.updated_at }}
+            date: {{ getDate(post.updated_at) }}
+
           </p>
         </div>
 
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'posts',
   data () {
@@ -54,6 +56,10 @@ export default {
     },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
+    getDate(d){
+      const date = new Date(d).toLocaleDateString('en-gb',{month: 'long', year: 'numeric', day: 'numeric'})
+      return date
     }
   }
 }
