@@ -6,8 +6,10 @@
           <img :src="post.image_url" class="mx-1 border" width="50%" height="auto" />
           <p class="block flex-1 font-mono font-semibold flex items-center ">
             {{ post.title }}<br>
-            by: {{ post.author }}
-            id: {{ post.id }}
+            by: {{ post.author }}<br>
+            id: {{ post.id }} <br>
+            date: {{ getDate(post.updated_at) }}
+
           </p>
         </div>
 
@@ -28,6 +30,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'posts',
   data () {
@@ -53,6 +56,10 @@ export default {
     },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
+    getDate(d){
+      const date = new Date(d).toLocaleDateString('en-gb',{month: 'long', year: 'numeric', day: 'numeric'})
+      return date
     }
   }
 }
