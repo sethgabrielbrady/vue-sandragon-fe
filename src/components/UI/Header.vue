@@ -1,13 +1,15 @@
 <template>
   <div>
-    <header class="py-3" style=" position: fixed; z-index: 3; width: 100%;">
-      <div class="container m-auto flex flex-wrap items-center justify-end">
-        <router-link to="/" class="text-white px-2 no-underline absolute flex nav-link" style="right: calc(100% - 9rem);">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sd-orange" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-          </svg>
-          <p clas="inline-block">SANDRAGON</p>
+    <header class="p-3 grid grid-cols-2 gap-0" style=" position: fixed; z-index: 3; width: 100%;">
+
+      <div class="container flex flex-wrap items-center justify-start">
+        <router-link to="/" class="text-white px-2 no-underline flex nav-link">
+          <img src="../../assets/sandragon_orange.png" class="m-auto" style="width: 40px;">
+          <p class="inline-block my-2 text-2xl sd-font-orange" style="transform:translate(10px, calc(50% - 14px));">SANDRAGON</p>
         </router-link>
+      </div>
+
+      <div class="container flex flex-row items-center justify-end">
         <div>
           <router-link to="/about" class="text-white px-1 no-underline inline-block nav-link">
             <p clas="inline-block">About</p>
@@ -15,11 +17,10 @@
           <router-link to="/content" class="text-white px-1 no-underline inline-block nav-link">
             <p clas="inline-block nav-link">| Content</p>
           </router-link>
-          <p class="text-white px-2 no-underline inline block nav-link" v-if="!signedIn()" @click="checkUrl">Sign in</p>
+          <p class="text-white px-2 no-underline inline block nav-link" v-if="!signedIn()" @click="checkUrl">| Sign in</p>
           <div class="dropdown rounded-lg" v-if="signedIn()">
             <p v-if="this.$store.state.currentUser.username" class="inline-block text-white nav-link">| {{this.$store.state.currentUser.username}}</p>
             <p v-else class="inline-block text-white nav-link">| {{ this.$store.state.currentUser.email }}</p>
-
             <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" class="w-7 h-7 ml-2 bg-gray-900 rounded-full inline-block"/>
             <div class="dropdown-content">
               <router-link to="/posts" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Posts Edit</router-link>
@@ -29,6 +30,7 @@
           </div>
         </div>
       </div>
+
     </header>
   </div>
 </template>
