@@ -18,6 +18,18 @@ header, footer {
   color: #ED7126
 }
 
+.sd-font-light-blue {
+  color: #9CA9C1;
+}
+
 .bg-orange {
   background: #ED7126;
+}
+
+.bg-sd-dark-blue {
+  background-color: #0F102F
+}
+
+.bg-sd-light {
+  background-color: #ECEBE8
 }

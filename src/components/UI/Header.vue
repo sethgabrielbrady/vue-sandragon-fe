@@ -1,14 +1,12 @@
 <template>
   <div>
     <header class="p-3 grid grid-cols-2 gap-0" style=" position: fixed; z-index: 3; width: 100%;">
-
       <div class="container flex flex-wrap items-center justify-start">
         <router-link to="/" class="text-white px-2 no-underline flex nav-link">
           <img src="../../assets/sandragon_orange.png" class="m-auto" style="width: 40px;">
           <p class="inline-block my-2 text-2xl sd-font-orange" style="transform:translate(10px, calc(50% - 14px));">SANDRAGON</p>
         </router-link>
       </div>
-
       <div class="container flex flex-row items-center justify-end">
         <div>
           <router-link to="/content" class="text-white px-1 no-underline inline-block nav-link">
@@ -37,6 +35,7 @@
 
 export default {
   name: 'Header',
+
   data() {
     return {
       toggle: false

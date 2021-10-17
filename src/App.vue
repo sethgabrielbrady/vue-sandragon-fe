@@ -11,9 +11,9 @@
       <Signin/>
     </div>
     <Header @toggleSignin="toggleModal"/>
-    <div @toggleSignin="toggleModal" >
+    <div @toggleSignin="toggleModal" :class="{ dimbackground: toggle}" >
       <router-view
-        class="py-20 router-view"
+        class="pt-20 router-view"
         style="min-height:calc(100vh + 30px);"
       >
       </router-view>
@@ -55,6 +55,10 @@ export default {
 </script>
 <style>
   .dimbackground {
-     background-color:rgba(0,0,0,0.5);
+     background-color:rgba(0,0,0,0.50);
+     pointer-events: none;
+     scroll-behavior: none;
+     opacity: .25;
+     overflow: hidden !important;
   }
 </style>
