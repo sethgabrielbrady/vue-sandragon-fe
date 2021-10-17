@@ -9,17 +9,26 @@
         <a href="https://www.instagram.com/sandragongame/" target="_blank"><img src="https://www.sandragon.io/static/media/instagram.e8a1de67.png" alt="Instagram" class="h-7 w-7 sd-font-orange"></a>
       </div>
       <p class="text-white my-3">Follow @sandragongame on social media.</p>
-      <div class="mx-auto w-1/3 text-center p-4 my-2">
-        <form class="flex flex-row shadow" style="opacity: 0.85;">
-          <input type="email" v-model="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email">
+      <div class="mx-auto w-1/3 text-center my-2 rounded bg-white">
+        <form class="flex flex-row w-full rounded">
+          <!-- <input type="email" v-model="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email"> -->
+          <input type="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 right-rounded">Email</button>
         </form>
       </div>
-      <p class="sd-font-orange my-2">
-        DOWNLOADS | ABOUT | UPDATES | CONTACT
+      <p class=" sd-font-orange my-2 inline-block ">
+        <router-link to="/content" class="px-1 no-underline inline-block">
+          CONTENT |
+        </router-link>
+        <router-link to="/about" class="px-1 no-underline inline-block">
+          ABOUT |
+        </router-link>
+        <router-link to="/contact" class="px-1 no-underline inline-block">
+          CONTACT
+        </router-link>
       </p>
       <img src="../../assets/sandragon_blue.png" class="m-auto" style="width: 100px;">
-      <p class="text-white my-2">
+      <p class="text-white my-2 m-auto">
         PRIVACY | TERMS OF SERVICE
       </p>
     </footer>

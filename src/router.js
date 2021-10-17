@@ -11,6 +11,7 @@ import Homepage from '@/components/Homepage'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Privacy from '@/components/Privacy'
+import Account from '@/components/Account'
 
 
 export default new Router({
@@ -28,6 +29,7 @@ export default new Router({
     {path: '/admin', name:'Admin', component: Admin},
     {path: '/about', name:'About', component: About},
     {path: '/contact', name:'Contact', component: Contact},
-    {path: '/privacy-policy', name:'Privacy', component: Privacy}
+    {path: '/privacy-policy', name:'Privacy', component: Privacy},
+    {path: '/account', name:'Account', component: Account}
   ]
 })
