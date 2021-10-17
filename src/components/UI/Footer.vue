@@ -1,9 +1,9 @@
 <template>
   <div class="relative">
     <footer class="py-3 flex flex-col justify-center text-center" style="z-index: 3; width: 100%; bottom: 0px;">
-      <div class="flex flex-row justify-center my-2 mt-4">
+      <div class="flex flex-row justify-center my-2 mt-4 sd-font-light-blue">
         <a href="https://twitter.com/sandragongame" target="_blank">
-          <img src="https://www.sandragon.io/static/media/twitter.6d0df318.png" alt="Twitter" class="h-7 w-7 sd-font-orange mx-1">
+          <img src="https://www.sandragon.io/static/media/twitter.6d0df318.png" alt="Twitter" class=" sd-font-light-blue h-7 w-7 sd-font-orange mx-1">
         </a>
         <a href="https://discord.gg/8U6VYbdgPf" target="_blank">
           <img src="https://www.sandragon.io/static/media/discord.25c69c3e.png" alt="Discord" class="h-7 w-7 sd-font-orange mx-1">
@@ -18,12 +18,12 @@
           <img src="https://www.sandragon.io/static/media/instagram.e8a1de67.png" alt="Instagram" class="h-7 w-7 sd-font-orange mx-1">
         </a>
       </div>
-      <p class="text-white my-3">Follow @sandragongame on social media.</p>
+      <p class="text-white my-3 sd-font-light-blue">Follow @sandragongame on social media.</p>
       <div class="mx-auto w-1/3 text-center my-2 rounded bg-white">
         <form class="flex flex-row w-full rounded">
           <!-- <input type="email" v-model="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email"> -->
-          <input type="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 right-rounded">Email</button>
+          <input type="email" class="input border rounded p-1 w-full bg-sd-dark-blue" id="email" placeholder="Email">
+          <button class="bg-sd-light-blue text-white py-1 px-4 rounded" style="width: 200px;">Get Updates</button>
         </form>
       </div>
       <p class=" sd-font-orange my-2 inline-block ">
@@ -38,7 +38,7 @@
         </a>
       </p>
       <img src="../../assets/sandragon_blue.png" class="m-auto" style="width: 70px;">
-      <p class="text-white my-2 m-auto">
+      <p class="text-white my-2 m-auto sd-font-light-blue">
         PRIVACY | TERMS OF SERVICE
       </p>
     </footer>

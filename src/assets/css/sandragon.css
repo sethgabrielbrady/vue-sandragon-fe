@@ -22,6 +22,9 @@ header, footer {
   color: #9CA9C1;
 }
 
+.bg-sd-light-blue {
+  background: #9CA9C1;
+}
 .bg-orange {
   background: #ED7126;
 }

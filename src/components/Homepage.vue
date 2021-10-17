@@ -1,39 +1,37 @@
 <template>
   <div class="relative">
-    <img src="../assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1400.jpg" class="homepage-img" />
-    <div class=" flex flex-column justify-center h-full m-auto">
-      <!-- <img
-        class="homepage-img h-screen"
-        sizes="(max-width: 1400px) 100vw, 1400px"
-        srcset="
-        src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_200.jpg 200w,
-        src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_507.jpg 507w,
-        src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_722.jpg 722w,
-        src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_899.jpg 899w,
-        src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1274.jpg 1274w,
-        src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1400.jpg 1400w"
-        src="src/assets/ADJ_AdobeStock_173514908.4a616bdb_zbyalr_c_scale,w_1400.jpg"
-        alt=""> -->
-
-      <carousel :per-page="1" autoplay="true" class="w-3/5 m-auto py-6 mt-6">
-        <slide class="flex flex-col justify-center">
-          <div class="text-center text-5xl text-white homepage-bold">
-            A new system that will bring
-            <br>remote players to the same
-            <br>virtual table top.
-          </div>
-        </slide>
-        <slide>
-          <div class="list-reset mt-4">
-            <div class="text-center text-2xl text-white w-2/3 m-auto">
-              <img :src="post.image_url" class="w-full roundedmd ">
-              <p class="py-4">
-                {{ post.body }}
-              </p>
+    <img
+      class="homepage-img"
+      sizes="(max-width: 1400px) 100vw, 1400px"
+      srcset="
+        ../assets/bg_200.jpg 200w,
+        ../assets/bg_507.jpg 507w,
+        ../assets/bg_722.jpg 722w,
+        ../assets/bg_899.jpg 899w,
+        ../assets/bg_1274.jpg 1274w,
+        ../assets/bg_1400.jpg 1400w"
+      src="../assets/bg_1400.jpg"
+      alt="" />
+    <div class="flex flex-column justify-center h-full m-auto">
+      <div class="w-3/5 m-auto mt-24">
+        <carousel :per-page="1" autoplay="true">
+          <slide class="flex flex-col justify-center shadow rounded opaque-dark-blue  ">
+            <div class="text-center text-5xl text-white homepage-bold">
+              A new system that will bring
+              <br>remote players to the same
+              <br>virtual table top.
+              <br>
+              <img src="../assets/sandragon_blue.png" class="m-auto" style="width: 80px; filter: brightness(140%);">
             </div>
-          </div>
-        </slide>
-      </carousel>
+          </slide>
+          <slide class="shadow rounded text-center text-3xl text-white relative">
+            <img :src="post.image_url" class="w-full rounded w-1/3 m-auto" style="filter: brightness(70%);">
+            <p class="mx-10 absolute" style="top:30%;">
+              {{ post.body }}
+            </p>
+          </slide>
+        </carousel>
+      </div>
     </div>
   </div>
 </template>
@@ -77,7 +75,7 @@ export default {
     height: auto;
     position: fixed;
     width: 100vw;
-    filter: brightness(80%);
+    filter: brightness(110%);
     top: 0px;
   }
   .homepage-bold {
@@ -86,5 +84,12 @@ export default {
   }
   .dimbackground {
      background-color:rgba(0,0,0,0.5);
+  }
+  .dim-background {
+     background-color:rgba(0,0,0,0.5) !important;
+  }
+  .opaque-dark-blue {
+    /* #0F102F */
+    background-color:rgba(015,016,047,0.85) !important;
   }
 </style>
