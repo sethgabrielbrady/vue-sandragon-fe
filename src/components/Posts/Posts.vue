@@ -13,7 +13,6 @@
           </p>
         </div>
 
-
         <div class="flex flex-row justify-between flex-end py-2">
           <router-link :to="`/posts/edit/${post.id}`" class="mx-2 block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block" v-if="signedIn()">
             Edit
@@ -36,9 +35,7 @@ export default {
   data () {
     return {
       posts: [],
-      // newpost: [],
       error: ''
-      // editedpost: ''
     }
   },
   created () {

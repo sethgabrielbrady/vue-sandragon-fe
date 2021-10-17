@@ -1,5 +1,7 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+  >
     <div
       class="fixed rounded max-w-sm m-auto my-8 shadow"
       style="z-index: 4; background: white; transform: translate(calc(25vw + 50%), calc(25vh - 10%)); width:30%; min-height:auto;"
@@ -11,8 +13,8 @@
     <Header @toggleSignin="toggleModal"/>
     <div @toggleSignin="toggleModal" >
       <router-view
-        class="py-20
-         router-view" style="min-height:calc(100vh + 30px);"
+        class="py-20 router-view"
+        style="min-height:calc(100vh + 30px);"
       >
       </router-view>
     </div>
@@ -53,6 +55,6 @@ export default {
 </script>
 <style>
   .dimbackground {
-     filter: brightness(50%);
+     background-color:rgba(0,0,0,0.5);
   }
 </style>

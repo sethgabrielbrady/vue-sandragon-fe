@@ -11,20 +11,18 @@
 
       <div class="container flex flex-row items-center justify-end">
         <div>
-          <router-link to="/about" class="text-white px-1 no-underline inline-block nav-link">
-            <p clas="inline-block">About</p>
-          </router-link>
           <router-link to="/content" class="text-white px-1 no-underline inline-block nav-link">
-            <p clas="inline-block nav-link">| Content</p>
+            <p class="inline-block nav-link">Content </p>
           </router-link>
-          <p class="text-white px-2 no-underline inline block nav-link" v-if="!signedIn()" @click="checkUrl">| Sign in</p>
+          <p class="inline-block text-white">  |  </p>
+          <p class="text-white px-2 no-underline inline block nav-link" v-if="!signedIn()" @click="checkUrl">Sign in</p>
           <div class="dropdown rounded-lg" v-if="signedIn()">
-            <p v-if="this.$store.state.currentUser.username" class="inline-block text-white nav-link">| {{this.$store.state.currentUser.username}}</p>
-            <p v-else class="inline-block text-white nav-link">| {{ this.$store.state.currentUser.email }}</p>
+            <p v-if="this.$store.state.currentUser.username" class="inline-block text-white nav-link">{{this.$store.state.currentUser.username}}</p>
+            <p v-else class="inline-block text-white nav-link">{{ this.$store.state.currentUser.email }}</p>
             <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" class="w-7 h-7 ml-2 bg-gray-900 rounded-full inline-block"/>
             <div class="dropdown-content">
               <router-link to="/posts" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Posts Edit</router-link>
-              <router-link to="user/id/account" class="text-white px-2 no-underline">Account</router-link>
+              <router-link to="/account" class="text-white px-2 no-underline">Account</router-link>
               <a @click.prevent="signOut" class="text-white px-2 no-underline" v-if="signedIn()" style="cursor:pointer;">Sign out</a>
             </div>
           </div>

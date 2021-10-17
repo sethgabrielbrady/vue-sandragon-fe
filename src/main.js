@@ -8,10 +8,11 @@ import Vuex from 'vuex'
 import { store } from './store'
 import './assets/tailwind.css'
 import './assets/css/sandragon.css'
-
+import VueCarousel from 'vue-carousel';
 
 Vue.use(Router);
 Vue.use(Vuex);
+Vue.use(VueCarousel);
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, {
