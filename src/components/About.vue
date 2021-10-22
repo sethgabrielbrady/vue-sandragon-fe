@@ -14,7 +14,7 @@
       <p class="w-3/5 text-white m-auto">
       Gamers want action, they want intrigue, and maybe some bawdy innuendo now and then.
       What we don’t want is time wasted looking up rules and trouble-shooting software.
-      andragon is built to maximize your playtime and minimize bog-downs.
+      Sandragon is built to maximize your playtime and minimize bog-downs.
       With 30 years of playing ttrpgs (table-top role playing games), we’ve learned about
       the pitfalls of gaming and how to avoid them through experience.
       </p>

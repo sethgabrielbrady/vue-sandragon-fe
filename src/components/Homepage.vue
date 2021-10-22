@@ -12,26 +12,35 @@
         ../assets/bg_1400.jpg 1400w"
       src="../assets/bg_1400.jpg"
       alt="" />
-    <div class="flex flex-column justify-center h-full m-auto">
-      <div class="w-3/5 m-auto mt-24">
-        <carousel :per-page="1" autoplay="true">
-          <slide class="flex flex-col justify-center shadow rounded opaque-dark-blue  ">
-            <div class="text-center text-5xl text-white homepage-bold">
-              A new system that will bring
-              <br>remote players to the same
-              <br>virtual table top.
-              <br>
-              <img src="../assets/sandragon_blue.png" class="m-auto" style="width: 80px; filter: brightness(140%);">
-            </div>
-          </slide>
-          <slide class="shadow rounded text-center text-3xl text-white relative">
-            <img :src="post.image_url" class="w-full rounded w-1/3 m-auto" style="filter: brightness(70%);">
-            <p class="mx-10 absolute" style="top:30%;">
-              {{ post.body }}
-            </p>
-          </slide>
-        </carousel>
-      </div>
+
+    <div class="w-full m-auto absolute" style="top:35%;">
+      <carousel :per-page="1" autoplay="true" class="m-auto">
+        <slide class="flex flex-col justify-center ">
+          <div class="text-center text-5xl text-white homepage-bold w-3/5 m-auto py-10">
+            A new system that will bring
+            <br>remote players to the same
+            <br>virtual table top.
+          </div>
+        </slide>
+        <slide class="flex flex-col justify-center ">
+          <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
+            {{ post.body }}
+          </div>
+          <router-link to="/content" class="flex justify-center" >
+            <button class="bg-orange text-white font-bold py-2 px-4 rounded my-2">
+              Content
+            </button>
+          </router-link>
+        </slide>
+         <slide class="flex flex-col justify-center ">
+          <div class="text-center text-3xl text-white homepage-bold w-3/5 m-auto py-10">
+            Compatible with Dungeons & Dragons® 5e, GURPS® and
+            best of all, our very own Sandragon
+          </div>
+        </slide>
+      </carousel>
+      <br>
+      <br>
     </div>
   </div>
 </template>
@@ -89,7 +98,6 @@ export default {
      background-color:rgba(0,0,0,0.5) !important;
   }
   .opaque-dark-blue {
-    /* #0F102F */
-    background-color:rgba(015,016,047,0.85) !important;
+    background-color:rgba(015,016,047,0.7) !important;
   }
 </style>
