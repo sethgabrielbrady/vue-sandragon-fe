@@ -26,7 +26,7 @@
           <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
             {{ post.body }}
           </div>
-          <router-link to="/content" class="flex justify-center" >
+          <router-link :to="(`/materials/info/${activeContentId}`)" class="flex justify-center" >
             <button class="bg-orange text-white font-bold py-2 px-4 rounded my-2">
               Content
             </button>
@@ -57,7 +57,9 @@ export default {
   data () {
     return {
       post: {},
-      error: ''
+      error: '',
+      activeContentId: '',
+      activePostId: ''
     }
   },
   created () {

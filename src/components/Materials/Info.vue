@@ -3,7 +3,7 @@
     <button
       v-if="isAdmin()"
       class="bg-transprent text-sm hover:bg-blue-400 text-blue hover:text-white no-underline font-bold py-2 px-4 rounded border border-blue-500 "
-      @click="routeTo"
+      @click="routeTo()"
       >
         Edit
     </button>
@@ -21,7 +21,7 @@
       <button
         v-if="isSignedIn()"
         class=" bg-orange download-btn text-sm no-underline font-bold py-2 px-4 rounded shadow text-white"
-        @click="addMaterial"
+        @click="addMaterial()"
         >
           Download
       </button>
@@ -47,6 +47,10 @@ export default {
     this.$http.plain.get(`/materials/${this.materialId}`)
       .then(response => { this.material = response.data })
       .catch(error => this.setError(error, 'Something went wrong'))
+
+    if(this.isAdmin()){
+      console.log(this.materialId)
+    }
   },
   methods: {
     isAdmin() {

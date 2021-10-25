@@ -2,8 +2,8 @@
   <div class="p-4 ">
     <h1 class="text-center p-4">Post Edit View for {{this.postId}}</h1>
     <div class="w-full max-w-5xl mx-auto">
+      <button class="bg-green-500 text-white font-bold py-2 px-4 rounded" v-if="postId"  @click="setPostActive">Set Active</button>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-
         <div class="mb-6">
           <label for="title" class="label" />
           <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" placeholder="Title">
@@ -45,7 +45,7 @@ export default {
     this.postId = this.getId()
   },
   methods: {
-    uploadFile: function() {
+    uploadFile () {
       this.inputPicture = this.$refs.inputFile.files[0];
     },
     getId(){
@@ -73,6 +73,15 @@ export default {
           author: this.author,
         }
       })
+    },
+    setPostActive () {
+      let activeId = this.postId;
+      activeId = activeId.toString();
+      this.$store.commit('setActivePostId', activeId )
+
+      if(this.$store.state.activePostId === activeId ){
+        alert ("This post is now set to active");
+      }
     }
   }
 }
