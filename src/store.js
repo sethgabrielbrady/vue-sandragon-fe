@@ -8,7 +8,9 @@ export const store = new Vuex.Store({
     currentUser: {},
     signedIn: false,
     csrf: null,
-    materialId: null
+    materialId: null,
+    activeContentId: null,
+    activePostId: null
   },
   mutations: {
     setCurrentUser (state, { currentUser, csrf }) {
@@ -28,6 +30,12 @@ export const store = new Vuex.Store({
     setMaterialId(state, materialId ) {
       state.materialId = materialId
     },
+    setActiveContentId(state, activeContentId ) {
+      state.activeContentId = activeContentId
+    },
+    setActivePostId(state, activePostId ) {
+      state.activePostId = activePostId
+    }
   },
   getters: {
     isAdmin (state) {

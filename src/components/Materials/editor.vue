@@ -1,6 +1,7 @@
 <template>
   <div class="items-center text-center relative">
     <div :class="{ dimbackground: showModal }" class="bg-purple-100 py-20">
+      <button class="bg-green-500 text-white font-bold py-2 px-4 rounded" v-if="materialId"  @click="setActive">Make Active</button>
       <button class="bg-red-500 text-white font-bold py-2 px-4 rounded" v-if="materialId"  @click="deleteItemCheck">Delete</button>
       <div class="mx-auto w-4/5 text-center p-4 ">
         <p class="bg-blue-200 rounded w-2/5 mx-auto py-2 text-blue-500 mb-12" style="font-size:2rem;">Material Editor</p>
@@ -62,7 +63,7 @@ export default {
     }
   },
   methods: {
-    uploadFile: function() {
+    uploadFile () {
       this.inputPicture = this.$refs.inputFile.files[0];
     },
     deleteItemCheck () {
@@ -103,6 +104,15 @@ export default {
         })
       }
       window.location = "/materials/editor";
+    },
+    setActive () {
+      let activeId = this.materialId;
+      activeId = activeId.toString();
+      this.$store.commit('setActiveContentId', activeId )
+
+      if(this.$store.state.activeContentId === activeId ){
+        alert ("This material is now set to active");
+      }
     }
   }
 }
