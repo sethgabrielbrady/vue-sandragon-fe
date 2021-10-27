@@ -11,7 +11,9 @@ export const store = new Vuex.Store({
     materialId: null,
     postId: null,
     activeContentId: null,
-    activePostId: null
+    activePostId: null,
+    postBlurb: null,
+    materialBlurb: null
   },
   mutations: {
     setCurrentUser (state, { currentUser, csrf }) {
@@ -39,6 +41,12 @@ export const store = new Vuex.Store({
     },
     setActivePostId(state, activePostId ) {
       state.activePostId = activePostId
+    },
+    setPostBlurb(state, postBlurb ) {
+      state.postBlurb = postBlurb
+    },
+    setMaterialBlurb(state, materialBlurb ) {
+      state.materialBlurb = materialBlurb
     }
   },
   getters: {

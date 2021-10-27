@@ -23,7 +23,7 @@ export default new Router({
     {path: '/signin', name: 'Signin', component: Signin},
     {path: '/signup', name: 'Signup', component: Signup},
     {path: '/posts', name: 'Posts', component: Posts},
-    {path: '/posts/edit/:id', name: Edit,  component: Edit },
+    {path: '/posts/edit/', name: Edit,  component: Edit },
     {path: '/posts/view/', name: View, component: View },
     {path: '/content', name: 'Materials', component: Materials},
     {path: '/materials/editor/', name: Editor, component: Editor },

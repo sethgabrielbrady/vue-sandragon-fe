@@ -1,20 +1,25 @@
 <template>
   <div class="p-4 ">
-    <h1 class="text-center p-4">Post Edit View for {{this.postId}}</h1>
+    <h1 class="text-center p-4">Post Edit View for {{postId}}</h1>
     <div class="w-full max-w-5xl mx-auto">
       <button class="bg-green-500 text-white font-bold py-2 px-4 rounded" v-if="postId"  @click="setPostActive">Set Active</button>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-6">
           <label for="title" class="label" />
-          <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" placeholder="Title">
+          <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" :placeholder="post.title" >
         </div>
         <div class="mb-6">
           <label for="author" class="label" />
-          <input type="author" v-model="author" class="input border rounded p-2 w-full" id="author" placeholder="Author">
+          <input type="author" v-model="author" class="input border rounded p-2 w-full" id="author" :placeholder="post.author">
         </div>
         <div class="mb-6">
           <label for="body" class="label" />
-          <textarea type="textarea" v-model="body" class="input border rounded p-2 w-full" id="body" placeholder="Body" />
+          <textarea type="textarea" v-model="body" class="input border rounded p-2 w-full" id="body" :placeholder="post.body" />
+        </div>
+
+        <div class="mb-6">
+          <label for="blurb" class="label" />
+          <textarea type="textarea" v-model="blurb" class="input border rounded p-2 w-full" id="body" :placeholder="post.blurb" />
         </div>
 
         <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">Post Image</label>
@@ -35,22 +40,33 @@ export default {
       postId: null,
       title: "",
       body: "",
-      author: ""
+      author: "",
+      blurb: "",
+      post: []
     }
   },
   created() {
-    if(!this.$store.getters.isAdmin){
-      this.$router.replace('/')
+   if (this.$store.state.currentUser.role !== "admin"){
+      this.$router.replace('/');
+    }else if(this.$store.state.postId){
+      this.postId = this.$store.state.postId
+      alert(this.postId);
+      this.$http.plain.get(`/posts/${this.postId}`)
+        .then(response => { this.post = response.data })
+        .catch(error => this.setError(error, 'Something went wrong'))
+
+      this.title = this.post.title
+      this.body = this.post.body
+      this.blurb = this.post.blurb
+      this.author = this.post.author
+    }else {
+      return
     }
-    this.postId = this.getId()
+
   },
   methods: {
     uploadFile () {
       this.inputPicture = this.$refs.inputFile.files[0];
-    },
-    getId(){
-      let url = window.location.href;
-      return url.slice(-1)
     },
     createItem: function() {
       const params = {
@@ -71,16 +87,21 @@ export default {
           title: this.title,
           body: this.body,
           author: this.author,
+          blurb: this.blurb,
         }
       })
     },
     setPostActive () {
       let activeId = this.postId;
+      let postBlurb = this.post.blurb;
+
       activeId = activeId.toString();
       this.$store.commit('setActivePostId', activeId )
+      this.$store.commit('setPostBlurb', postBlurb )
 
       if(this.$store.state.activePostId === activeId ){
         alert ("This post is now set to active");
+        alert (this.$store.state.postBlurb);
       }
     }
   }

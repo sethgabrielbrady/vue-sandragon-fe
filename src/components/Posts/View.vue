@@ -1,11 +1,5 @@
 <template>
   <div class="items-center text-center py-20">
-    <button
-      v-if="isAdmin()"
-      class="bg-transprent text-sm hover:bg-blue-400 text-blue hover:text-white no-underline font-bold py-2 px-4 rounded border border-blue-500 "
-      >
-        Edit
-    </button>
     <div
       v-if="post.length < 1"
     >
@@ -17,12 +11,6 @@
       <div class="mx-auto w-3/5 text-center p-4 mt-4">
         <p>{{post.body}}</p>
       </div>
-      <button
-        v-if="isSignedIn()"
-        class=" bg-orange download-btn text-sm no-underline font-bold py-2 px-4 rounded shadow text-white"
-        >
-          Download
-      </button>
     </div>
   </div>
 </template>
