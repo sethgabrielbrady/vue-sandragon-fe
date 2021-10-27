@@ -24,7 +24,7 @@
         </slide>
         <slide class="flex flex-col justify-center ">
           <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
-            {{ post.body }}
+            {{ $store.state.materialBlurb }}
           </div>
           <router-link :to="(`/materials/info/${activeContentId}`)" class="flex justify-center" >
             <button class="bg-orange text-white font-bold py-2 px-4 rounded my-2">
@@ -32,7 +32,17 @@
             </button>
           </router-link>
         </slide>
-         <slide class="flex flex-col justify-center ">
+        <slide class="flex flex-col justify-center ">
+          <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
+             {{ $store.state.postBlurb }}
+          </div>
+          <router-link :to="(`/post/view/${activePostId}`)" class="flex justify-center" >
+            <button class="bg-orange text-white font-bold py-2 px-4 rounded my-2">
+              Read More >
+            </button>
+          </router-link>
+        </slide>
+        <slide class="flex flex-col justify-center ">
           <div class="text-center text-3xl text-white homepage-bold w-3/5 m-auto py-10">
             Compatible with Dungeons & Dragons® 5e, GURPS® and
             best of all, our very own Sandragon
@@ -63,9 +73,7 @@ export default {
     }
   },
   created () {
-    this.$http.plain.get('/posts/4')
-      .then(response => { this.post = response.data})
-      .catch(error => this.setError(error, 'Something went wrong'))
+    // alert(this.$store.state.materialBlurb)
   },
   methods: {
     setError (error, text) {

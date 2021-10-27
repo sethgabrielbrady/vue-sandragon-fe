@@ -20,6 +20,11 @@
             <textarea type="textarea" v-model="description" class="input border rounded p-2 w-full" id="body" :placeholder="material.description" />
           </div>
 
+          <div class="mb-6">
+            <label for="blurb" class="label">Blurb</label><br>
+            <textarea type="textarea" v-model="blurb" class="input border rounded p-2 w-full" id="body" :placeholder="material.blurb" />
+          </div>
+
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="(materialId === null)"  @click="createItem">Create</button>
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="materialId" @click="createItem">Update</button>
         </form>
@@ -45,7 +50,8 @@ export default {
       title: "",
       description: "",
       material: [],
-      showModal: false
+      showModal: false,
+      blurb: ""
     }
   },
   created () {
@@ -58,9 +64,12 @@ export default {
         .catch(error => this.setError(error, 'Something went wrong'))
       this.title = this.material.title
       this.description = this.material.description
+      this.blurb = this.material.blurb
     }else {
       return
     }
+
+    document.querySelector("#title").value = this.material.title;
   },
   methods: {
     uploadFile () {
@@ -88,27 +97,35 @@ export default {
       )
 
       if(this.materialId){
-        //upload an image
-        if(this.inputPicture){ this.$http.uploadFile.patch(`/materials/${this.materialId}`, formData) }
-        //then upload any other changes
+
+        if(this.inputPicture){
+          this.$http.uploadFile.patch(`/materials/${this.materialId}`,
+          formData)
+        }
+
         this.$http.plain.patch(`/materials/${this.materialId}`, {
           material: {
             title: this.title,
             description: this.description,
+            blurb: this.blurb,
           }
         })
       } else {
         this.$http.plain.post("/materials/", {
           title: this.title,
           description: this.description,
+          blurb: this.blurb,
         })
       }
       window.location = "/materials/editor";
     },
     setActive () {
       let activeId = this.materialId;
+      let materialBlurb = this.material.blurb;
+      alert(this.material.blurb);
       activeId = activeId.toString();
       this.$store.commit('setActiveContentId', activeId )
+      this.$store.commit('setMaterialBlurb', materialBlurb )
 
       if(this.$store.state.activeContentId === activeId ){
         alert ("This material is now set to active");

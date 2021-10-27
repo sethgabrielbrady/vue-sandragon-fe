@@ -9,8 +9,11 @@ export const store = new Vuex.Store({
     signedIn: false,
     csrf: null,
     materialId: null,
+    postId: null,
     activeContentId: null,
-    activePostId: null
+    activePostId: null,
+    postBlurb: null,
+    materialBlurb: null
   },
   mutations: {
     setCurrentUser (state, { currentUser, csrf }) {
@@ -30,11 +33,20 @@ export const store = new Vuex.Store({
     setMaterialId(state, materialId ) {
       state.materialId = materialId
     },
+    setPostId(state, postId ) {
+      state.postId = postId
+    },
     setActiveContentId(state, activeContentId ) {
       state.activeContentId = activeContentId
     },
     setActivePostId(state, activePostId ) {
       state.activePostId = activePostId
+    },
+    setPostBlurb(state, postBlurb ) {
+      state.postBlurb = postBlurb
+    },
+    setMaterialBlurb(state, materialBlurb ) {
+      state.materialBlurb = materialBlurb
     }
   },
   getters: {
