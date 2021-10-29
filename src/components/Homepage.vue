@@ -36,7 +36,7 @@
           <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
              {{ $store.state.postBlurb }}
           </div>
-          <router-link :to="(`/post/view/${activePostId}`)" class="flex justify-center" >
+          <router-link :to="(`/posts/view/${activePostId}`)" class="flex justify-center" >
             <button class="bg-orange text-white font-bold py-2 px-4 rounded my-2">
               Read More >
             </button>

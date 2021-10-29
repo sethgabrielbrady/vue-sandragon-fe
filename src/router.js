@@ -5,7 +5,7 @@ import Posts from '@/components/Posts/Posts'
 import Edit from '@/components/Posts/edit'
 import Materials from '@/components/Materials/Materials'
 import Editor from '@/components/Materials/editor'
-import Info from '@/components/Materials/Info'
+import _Slug from '@/components/Materials/_slug'
 import Admin from '@/components/Admin'
 import Homepage from '@/components/Homepage'
 import About from '@/components/About'
@@ -27,7 +27,7 @@ export default new Router({
     {path: '/posts/view/', name: View, component: View },
     {path: '/content', name: 'Materials', component: Materials},
     {path: '/materials/editor/', name: Editor, component: Editor },
-    {path: '/materials/info/', name: Info, component: Info },
+    {path: '/content/:slug', name: _Slug, component: _Slug },
     {path: '/admin', name:'Admin', component: Admin},
     {path: '/about', name:'About', component: About},
     {path: '/contact', name:'Contact', component: Contact},
