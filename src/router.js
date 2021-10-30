@@ -6,13 +6,14 @@ import Edit from '@/components/Posts/edit'
 import Materials from '@/components/Materials/Materials'
 import Editor from '@/components/Materials/editor'
 import _Slug from '@/components/Materials/_slug'
+import View from '@/components/Posts/_slug'
 import Admin from '@/components/Admin'
 import Homepage from '@/components/Homepage'
 import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Privacy from '@/components/Privacy'
 import Account from '@/components/Account'
-import View from '@/components/Posts/View'
+// import View from '@/components/Posts/View'
 
 
 export default new Router({
@@ -24,7 +25,8 @@ export default new Router({
     {path: '/signup', name: 'Signup', component: Signup},
     {path: '/posts', name: 'Posts', component: Posts},
     {path: '/posts/edit/', name: Edit,  component: Edit },
-    {path: '/posts/view/', name: View, component: View },
+    // {path: '/posts/view/', name: View, component: View },
+    {path: '/posts/:slug/', name: View, component: View },
     {path: '/content', name: 'Materials', component: Materials},
     {path: '/materials/editor/', name: Editor, component: Editor },
     {path: '/content/:slug', name: _Slug, component: _Slug },

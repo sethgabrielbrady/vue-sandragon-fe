@@ -25,7 +25,7 @@
           </button>
           <button
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block"
-            @click="setPost(post.id, 'view')">View
+            @click="setPost(post.slug)">View
           </button>
           <button
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block"
@@ -70,9 +70,8 @@ export default {
     routeTo(route){
       window.location = route;
     },
-    setPost(postId, url) {
-      this.$store.commit("setPostId", postId)
-      this.routeTo("/posts/"+url+"/");
+    setPost(slug) {
+      this.routeTo("/posts/"+slug);
     },
   }
 }
