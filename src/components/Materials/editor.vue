@@ -12,17 +12,22 @@
 
           <div class="mb-6">
             <label for="title" class="label">Title</label><br>
-            <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title">
+            <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title" required>
           </div>
 
           <div class="mb-6">
             <label for="description" class="label">Description</label><br>
-            <textarea type="textarea" v-model="description" class="input border rounded p-2 w-full" id="body" :placeholder="material.description" />
+            <textarea type="textarea" v-model="description" class="input border rounded p-2 w-full" id="body" :placeholder="material.description" required />
           </div>
 
           <div class="mb-6">
             <label for="blurb" class="label">Blurb</label><br>
             <textarea type="textarea" v-model="blurb" class="input border rounded p-2 w-full" id="body" :placeholder="material.blurb" />
+          </div>
+
+          <div class="mb-6">
+            <label for="slug" class="label">Slug</label><br>
+            <input type="title" v-model="slug" class="input border rounded p-2 w-full" id="body" :placeholder="material.slug" required />
           </div>
 
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="(materialId === null)"  @click="createItem">Create</button>
@@ -51,7 +56,8 @@ export default {
       description: "",
       material: [],
       showModal: false,
-      blurb: ""
+      blurb: "",
+      slug: "",
     }
   },
   created () {
@@ -65,6 +71,7 @@ export default {
       this.title = this.material.title
       this.description = this.material.description
       this.blurb = this.material.blurb
+      this.slug = this.material.slug
     }else {
       return
     }
@@ -108,6 +115,7 @@ export default {
             title: this.title,
             description: this.description,
             blurb: this.blurb,
+            slug: this.slug
           }
         })
       } else {
@@ -115,6 +123,7 @@ export default {
           title: this.title,
           description: this.description,
           blurb: this.blurb,
+          slug: this.slug,
         })
       }
       window.location = "/materials/editor";

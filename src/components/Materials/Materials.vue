@@ -21,7 +21,7 @@
         v-for="material in materials"
         :key="material.id"
         :material="material"
-        @click="setMaterial(material.id)">
+        @click="viewContent(material.slug)">
           <img :src="material.image_url" class="border rounded-lg mason-image" style="object-fit: contain;" />
           <div class="text-center absolute p-4 w-full" style="top: 10%; overflow:hidden;">
             <p class="font-semibold pt-3 text-center relative mason-title">{{ material.title }}</p>
@@ -53,9 +53,8 @@ export default {
       .catch(error => this.setError(error, 'Something went wrong'))
   },
   methods: {
-    setMaterial(materialId) {
-      this.$store.commit('setMaterialId', materialId)
-      this.routeTo("/materials/info/");
+    viewContent(slug) {
+      this.routeTo("/content/" + slug);
     },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text

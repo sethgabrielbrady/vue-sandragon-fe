@@ -6,20 +6,25 @@
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-6">
           <label for="title" class="label" />
-          <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" :placeholder="post.title" >
+          <input type="title" v-model="title" class="input border rounded p-2 w-full post-form" id="title" :placeholder="post.title">
         </div>
         <div class="mb-6">
           <label for="author" class="label" />
-          <input type="author" v-model="author" class="input border rounded p-2 w-full" id="author" :placeholder="post.author">
+          <input type="author" v-model="author" class="input border rounded p-2 w-full post-form" id="author" :placeholder="post.author">
         </div>
         <div class="mb-6">
           <label for="body" class="label" />
-          <textarea type="textarea" v-model="body" class="input border rounded p-2 w-full" id="body" :placeholder="post.body" />
+          <textarea type="textarea" v-model="body" class="input border rounded p-2 w-full post-form" id="body" :placeholder="post.body" />
         </div>
 
         <div class="mb-6">
           <label for="blurb" class="label" />
-          <textarea type="textarea" v-model="blurb" class="input border rounded p-2 w-full" id="body" :placeholder="post.blurb" />
+          <input type="text" v-model="blurb" class="input border rounded p-2 w-full post-form" id="blurb" :placeholder="post.blurb" />
+        </div>
+
+        <div class="mb-6">
+          <label for="slug" class="slug" />
+          <input type="slug" v-model="slug" class="input border rounded p-2 w-full post-form" id="slug" :placeholder="post.slug">
         </div>
 
         <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">Post Image</label>
@@ -42,7 +47,8 @@ export default {
       body: "",
       author: "",
       blurb: "",
-      post: []
+      post: [],
+      slug: ""
     }
   },
   created() {
@@ -59,6 +65,7 @@ export default {
       this.body = this.post.body
       this.blurb = this.post.blurb
       this.author = this.post.author
+      this.slug = this.post.slug
     }else {
       return
     }
@@ -88,6 +95,7 @@ export default {
           body: this.body,
           author: this.author,
           blurb: this.blurb,
+          slug: this.slug,
         }
       })
     },
