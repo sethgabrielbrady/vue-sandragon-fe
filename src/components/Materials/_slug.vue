@@ -61,8 +61,10 @@ export default {
     checkSlug() {
       this.slug = window.location.href.slice(30);
       let match = false;
-      this.materials.forEach(element =>{
-        if (element.slug == this.slug ) {
+      this.materials.forEach(material =>{
+        if (material.slug == this.slug ) {
+          //set the  material id to whatever the content is set to at the momonet
+          this.$store.commit('setMaterialId', material.id)
           match = true;
           return;
         }
