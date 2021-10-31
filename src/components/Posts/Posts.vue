@@ -12,20 +12,21 @@
             {{ post.title }}<br>
             by: {{ post.author }}<br>
             id: {{ post.id }} <br>
-            date: {{ getDate(post.updated_at) }}
+            date: {{ getDate(post.updated_at) }}<br>
+            slug: {{post.slug}}
           </p>
         </div>
 
         <div class="flex flex-row justify-between flex-end py-2">
           <button
-            @click="setPost(post.id, 'edit')"
+            @click="routeToEdit(post.id)"
             class="mx-2 block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block"
             v-if="signedIn()">
             Edit
           </button>
           <button
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block"
-            @click="setPost(post.slug)">View
+            @click="routeToPost(post.slug)">View
           </button>
           <button
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block"
@@ -70,8 +71,13 @@ export default {
     routeTo(route){
       window.location = route;
     },
-    setPost(slug) {
-      this.routeTo("/posts/"+slug);
+    //convert this to one function
+    routeToEdit(id) {
+      this.$store.commit("setPostId", id);
+      this.routeTo("/posts/edit");
+    },
+    routeToPost(slug) {
+      this.routeTo("/"+slug);
     },
   }
 }

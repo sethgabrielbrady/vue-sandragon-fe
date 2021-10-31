@@ -131,7 +131,6 @@ export default {
     setActive () {
       let activeId = this.materialId;
       let materialBlurb = this.material.blurb;
-      alert(this.material.blurb);
       activeId = activeId.toString();
       this.$store.commit('setActiveContentId', activeId )
       this.$store.commit('setMaterialBlurb', materialBlurb )

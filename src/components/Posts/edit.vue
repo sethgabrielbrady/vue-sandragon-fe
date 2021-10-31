@@ -56,7 +56,7 @@ export default {
       this.$router.replace('/');
     }else if(this.$store.state.postId){
       this.postId = this.$store.state.postId
-      alert(this.postId);
+
       this.$http.plain.get(`/posts/${this.postId}`)
         .then(response => { this.post = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
