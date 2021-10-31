@@ -77,7 +77,7 @@ export default {
       this.routeTo("/posts/edit");
     },
     routeToPost(slug) {
-      this.routeTo("/"+slug);
+      this.routeTo("posts/"+slug);
     },
   }
 }
