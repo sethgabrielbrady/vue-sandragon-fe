@@ -100,16 +100,20 @@ export default {
       })
     },
     setPostActive () {
-      let activeId = this.postId;
+      let activeSlug = this.post.slug;
       let postBlurb = this.post.blurb;
 
-      activeId = activeId.toString();
-      this.$store.commit('setActivePostId', activeId )
       this.$store.commit('setPostBlurb', postBlurb )
 
-      if(this.$store.state.activePostId === activeId ){
+      if(this.post.active === false)
+        this.$http.plain.patch(`/posts/${this.postId}`, {
+          post: { active: true }
+      })
+
+      this.$store.commit('setActivePostSlug', activeSlug )
+      if(this.$store.state.activePostSlug === activeSlug ){
         alert ("This post is now set to active");
-        alert (this.$store.state.postBlurb);
+        alert (activeSlug);
       }
     }
   }
