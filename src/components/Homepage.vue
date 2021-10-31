@@ -26,7 +26,7 @@
           <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
             {{ $store.state.materialBlurb }}
           </div>
-          <router-link :to="(`/materials/info/${activeContentId}`)" class="flex justify-center" >
+          <router-link :to="(`/content/${activeContentSlug}`)" class="flex justify-center" >
             <button class="bg-orange text-white font-bold py-2 px-4 rounded my-2">
               Content
             </button>
@@ -68,11 +68,12 @@ export default {
     return {
       post: {},
       error: '',
-      activeContentId: '',
+      activeContentSlug: '',
       activePostId: ''
     }
   },
   created () {
+    this.getActive('materials')
     // alert(this.$store.state.materialBlurb)
   },
   methods: {
@@ -82,6 +83,25 @@ export default {
     getPostImage () {
       console.log("post image", this.post.image_url)
       return this.post.image_url;
+    },
+    async getActive(items){
+
+      //make api call and checks for active
+      let data = []
+      await this.$http.secured.get('/'+items)
+        .then(response => { data = response.data})
+        .catch(error => this.setError(error, 'Something went wrong'))
+
+      for (const item of data) {
+        if (item.active === true ){
+          if (items === "materials"){
+            this.$store.commit('setActiveContentSlug', item.slug )
+            this.activeContentSlug = item.slug
+            alert( this.$store.state.activeContentSlug)
+          }
+        }
+      }
+
     }
   }
 }

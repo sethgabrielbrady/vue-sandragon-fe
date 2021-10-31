@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
     csrf: null,
     materialId: null,
     postId: null,
-    activeContentId: null,
+    activeContentSlug: null,
     activePostId: null,
     postBlurb: null,
     materialBlurb: null
@@ -36,8 +36,8 @@ export const store = new Vuex.Store({
     setPostId(state, postId ) {
       state.postId = postId
     },
-    setActiveContentId(state, activeContentId ) {
-      state.activeContentId = activeContentId
+    setActiveContentSlug(state, activeContentSlug ) {
+      state.activeContentSlug = activeContentSlug
     },
     setActivePostId(state, activePostId ) {
       state.activePostId = activePostId

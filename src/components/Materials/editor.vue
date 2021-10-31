@@ -12,12 +12,12 @@
 
           <div class="mb-6">
             <label for="title" class="label">Title</label><br>
-            <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title" required>
+            <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title">
           </div>
 
           <div class="mb-6">
             <label for="description" class="label">Description</label><br>
-            <textarea type="textarea" v-model="description" class="input border rounded p-2 w-full" id="body" :placeholder="material.description" required />
+            <textarea type="textarea" v-model="description" class="input border rounded p-2 w-full" id="body" :placeholder="material.description" />
           </div>
 
           <div class="mb-6">
@@ -27,7 +27,7 @@
 
           <div class="mb-6">
             <label for="slug" class="label">Slug</label><br>
-            <input type="title" v-model="slug" class="input border rounded p-2 w-full" id="body" :placeholder="material.slug" required />
+            <input type="title" v-model="slug" class="input border rounded p-2 w-full" id="body" :placeholder="material.slug" />
           </div>
 
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="(materialId === null)"  @click="createItem">Create</button>
@@ -104,7 +104,6 @@ export default {
       )
 
       if(this.materialId){
-
         if(this.inputPicture){
           this.$http.uploadFile.patch(`/materials/${this.materialId}`,
           formData)
@@ -129,13 +128,21 @@ export default {
       window.location = "/materials/editor";
     },
     setActive () {
-      let activeId = this.materialId;
+      let activeSlug = this.material.slug;
       let materialBlurb = this.material.blurb;
-      activeId = activeId.toString();
-      this.$store.commit('setActiveContentId', activeId )
+
       this.$store.commit('setMaterialBlurb', materialBlurb )
 
-      if(this.$store.state.activeContentId === activeId ){
+      //set this material to active
+      //should create seperate modal that contains active material and post slugs
+      if(this.material.active === false)
+        this.$http.plain.patch(`/materials/${this.materialId}`, {
+          material: { active: true }
+      })
+
+      this.$store.commit('setActiveContentSlug', activeSlug )
+      if(this.$store.state.activeContentSlug === activeSlug ){
+        alert (activeSlug);
         alert ("This material is now set to active");
       }
     }
