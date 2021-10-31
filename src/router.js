@@ -24,7 +24,7 @@ export default new Router({
     {path: '/signup', name: 'Signup', component: Signup},
     {path: '/posts', name: 'Posts', component: Posts},
     {path: '/posts/edit/', name: Edit,  component: Edit },
-    {path: '/:slug', name: PostSlug, component: PostSlug },
+    {path: '/posts/:slug', name: PostSlug, component: PostSlug },
     {path: '/content', name: 'Materials', component: Materials},
     {path: '/materials/editor/', name: Editor, component: Editor },
     {path: '/content/:slug', name: _Slug, component: _Slug },

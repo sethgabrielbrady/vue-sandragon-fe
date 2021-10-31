@@ -43,7 +43,7 @@ export default {
       return this.$store.state.signedIn
     },
     checkSlug() {
-      this.slug = window.location.href.slice(22);
+      this.slug = window.location.href.slice(28);
       let match = false;
       this.posts.forEach(element =>{
         if (element.slug == this.slug ) {
