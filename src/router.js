@@ -13,6 +13,8 @@ import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Privacy from '@/components/Privacy'
 import Account from '@/components/Account'
+import Terms from '@/components/Terms'
+
 
 
 export default new Router({
@@ -32,6 +34,8 @@ export default new Router({
     {path: '/about', name:'About', component: About},
     {path: '/contact', name:'Contact', component: Contact},
     {path: '/privacy-policy', name:'Privacy', component: Privacy},
-    {path: '/account', name:'Account', component: Account}
+    {path: '/account', name:'Account', component: Account},
+    {path: '/terms', name:'Terms', component: Terms}
+
   ]
 })
