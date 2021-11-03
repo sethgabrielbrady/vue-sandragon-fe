@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="max-w-sm m-auto">
-      <div class="p-10">
+      <div class="p-10 ">
         <h3 class="text-2xl mb-6 text-grey-darkest text-center">Sign Up</h3>
-        <form @submit.prevent="signup">
+        <form @submit.prevent="signup" class="relative">
           <div class="text-red" v-if="error">{{ error }}</div>
 
           <div class="mb-6">
@@ -20,22 +20,23 @@
             <label for="password" class="label">Password</label>
             <input type="password" v-model="password" class="input border rounded p-2 w-full" id="password" placeholder="Password">
           </div>
-
-          <div class="mb-6 relative text-left">
-            <label
-              for="password"
-              class="label"
-            >
-              Terms of Services
-            </label>
-            <input type="checkbox" v-model="Terms" @click="termsCheck()" class="input border rounded p-2 w-full" id="Terms" placeholder="Terms" required>
-          </div>
-
           <div class="mb-6">
             <label for="password_confirmation" class="label">Password Confirmation</label>
             <input type="password" v-model="password_confirmation" class="input border rounded p-2 w-full" id="password_confirmation" placeholder="Password Confirmation">
           </div>
-          <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 w-full">Sign Up</button>
+          <div class="mb-6 relative flex row">
+            <svg v-if="visibleSubmit" @click="termsCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <input v-else type="checkbox" v-model="Terms" class="input border rounded p-2 mt-2 mr-3 " @click="termsCheck()" id="Terms" placeholder="Terms" required>
+
+            <label for="Terms" class="ml-2 label text-xs">
+              By checking this box, you agree to our <a href="/terms" target="_blank">Terms of Services</a>
+            </label>
+          </div>
+          <button v-if="visibleSubmit" type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 w-full">Sign Up</button>
+          <button v-else class="bg-gray-400 text-white font-bold py-2 px-4 rounded my-2 w-full" style="pointer-events:none;">Sign Up</button>
+
         </form>
         <div>
           <p class="text-center mt-4">Already a member?</p>
@@ -69,7 +70,7 @@ export default {
       password_confirmation: '',
       username: '',
       error: '',
-      visibleTerms: false
+      visibleSubmit: false
     }
   },
   created () {
@@ -107,8 +108,7 @@ export default {
       return this.visibleTerms;
     },
     termsCheck(){
-      this.visibleTerms = !this.visibleTerms;
-      //add something here to ensure that terms is either checked or not
+      this.visibleSubmit = !this.visibleSubmit
     }
   }
 }
