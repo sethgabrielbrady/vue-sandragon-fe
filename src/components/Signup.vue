@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-sm m-auto">
+    <div class="max-w-lg m-auto">
       <div class="p-10 ">
         <h3 class="text-2xl mb-6 text-grey-darkest text-center">Sign Up</h3>
         <form @submit.prevent="signup" class="relative">
@@ -8,32 +8,47 @@
 
           <div class="mb-6">
             <label for="email" class="label">E-mail Address</label>
-            <input type="email" v-model="email" class="input border rounded p-2 w-full" id="email" placeholder="email">
+            <input type="email" v-model="email" class="input border rounded p-2 w-full" id="email" placeholder="email" required>
           </div>
 
           <div class="mb-6">
             <label for="username" class="label">username</label>
-            <input type="username" v-model="username" class="input border rounded p-2 w-full" id="username" placeholder="username">
+            <input type="username" v-model="username" class="input border rounded p-2 w-full" id="username" placeholder="username" required>
           </div>
 
           <div class="mb-6">
             <label for="password" class="label">Password</label>
-            <input type="password" v-model="password" class="input border rounded p-2 w-full" id="password" placeholder="Password">
+            <input type="password" v-model="password" class="input border rounded p-2 w-full" id="password" placeholder="Password" required>
           </div>
           <div class="mb-6">
             <label for="password_confirmation" class="label">Password Confirmation</label>
-            <input type="password" v-model="password_confirmation" class="input border rounded p-2 w-full" id="password_confirmation" placeholder="Password Confirmation">
+            <input type="password" v-model="password_confirmation" class="input border rounded p-2 w-full" id="password_confirmation" placeholder="Password Confirmation" required>
           </div>
-          <div class="mb-6 relative flex row">
-            <svg v-if="visibleSubmit" @click="termsCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <input v-else type="checkbox" v-model="Terms" class="input border rounded p-2 mt-2 mr-3 " @click="termsCheck()" id="Terms" placeholder="Terms" required>
 
-            <label for="Terms" class="ml-2 label text-xs">
-              By checking this box, you agree to our <a href="/terms" target="_blank">Terms of Services</a>
+          <div class="mb-6 relative">
+            <div class="absolute" style="display: inline-block; top: 2px;">
+              <svg v-if="visibleSubmit" @click="termsCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <input v-else type="checkbox" class="input border rounded p-2" @click="termsCheck()" id="Terms" required>
+            </div>
+              <label class="ml-6 label text-xs">
+                By checking this box, you state that are at least 13 years of age and that you agree to our <a href="/terms" target="_blank">Terms of Services</a>
+              </label>
+          </div>
+
+          <div class="mb-6 relative">
+            <div class="absolute" style="display: inline-block; top: 2px; ">
+              <svg v-if="updateSubmit" @click="updatesCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <input v-else type="checkbox" class="input border rounded p-2 " @click="updatesCheck()" id="Updates" required>
+            </div>
+            <label class="ml-6 label text-xs">
+              Would you like to receive email updates about Sandragon?
             </label>
           </div>
+
           <button v-if="visibleSubmit" type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 w-full">Sign Up</button>
           <button v-else class="bg-gray-400 text-white font-bold py-2 px-4 rounded my-2 w-full" style="pointer-events:none;">Sign Up</button>
 
@@ -70,7 +85,8 @@ export default {
       password_confirmation: '',
       username: '',
       error: '',
-      visibleSubmit: false
+      visibleSubmit: false,
+      updateSubmit: false
     }
   },
   created () {
@@ -109,6 +125,9 @@ export default {
     },
     termsCheck(){
       this.visibleSubmit = !this.visibleSubmit
+    },
+    updatesCheck(){
+      this.updateSubmit = !this.updateSubmit
     }
   }
 }

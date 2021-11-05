@@ -10,14 +10,17 @@
       <div class="container flex flex-row items-center justify-end">
         <div>
           <router-link to="/content" class="text-white px-1 no-underline inline-block nav-link">
-            <p class="inline-block nav-link">Content </p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" style="transform: translateY(6px);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+            </svg>
           </router-link>
-          <p class="inline-block text-white">  |  </p>
           <p class="text-white px-2 no-underline inline block nav-link" v-if="!signedIn()" @click="checkUrl">Sign in</p>
           <div class="dropdown rounded-lg" v-if="signedIn()">
-            <p v-if="this.$store.state.currentUser.username" class="inline-block text-white nav-link">{{this.$store.state.currentUser.username}}</p>
-            <p v-else class="inline-block text-white nav-link">{{ this.$store.state.currentUser.email }}</p>
-            <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" class="w-7 h-7 ml-2 bg-gray-900 rounded-full inline-block"/>
+            <div class="nav-link">
+              <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" class="w-7 h-7 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
+              <p v-if="this.$store.state.currentUser.username" class="inline-block text-white nav-link" style="font-size: 0.85rem;">{{this.$store.state.currentUser.username}}</p>
+              <p v-else class="inline-block text-white nav-link small">{{ this.$store.state.currentUser.email }}</p>
+            </div>
             <div class="dropdown-content">
               <router-link to="/posts" class="text-white px-2 no-underline" v-if="signedIn() && showAdminLink()">Posts Edit</router-link>
               <router-link to="/account" class="text-white px-2 no-underline">Account</router-link>
@@ -124,6 +127,9 @@ export default {
 }
 
 .nav-link:hover {
+  color: #ED7126;
+}
+.nav-link:hover p {
   color: #ED7126;
 }
 /* header {
