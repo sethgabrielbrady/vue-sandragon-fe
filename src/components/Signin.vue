@@ -22,7 +22,7 @@
       <router-link to="/signup" class="text-white no-underline center flex justify-center">
         <button
           class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2"
-           @click="toggleModal"
+          @click="toggleModal"
         >
           Sign Up
         </button>

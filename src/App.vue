@@ -11,7 +11,7 @@
       <Signin/>
     </div>
     <Header @toggleSignin="toggleModal"/>
-    <div @toggleSignin="toggleModal" :class="{ dimbackground: toggle}" >
+    <div @toggleSignin="toggleModal" >
       <router-view
         class="pt-20 router-view"
         style="min-height:calc(100vh + 30px);"
