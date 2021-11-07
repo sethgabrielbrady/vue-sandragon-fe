@@ -14,8 +14,9 @@ import Contact from '@/components/Contact'
 import Privacy from '@/components/Privacy'
 import Account from '@/components/Account'
 import Terms from '@/components/Terms'
-
-
+import ForgotPassword from '@/components/ForgotPassword'
+import ResetPassword from '@/components/ResetPassword'
+import UserEdit from '@/components/admin/users/Edit'
 
 export default new Router({
   mode: 'history',
@@ -35,7 +36,9 @@ export default new Router({
     {path: '/contact', name:'Contact', component: Contact},
     {path: '/privacy-policy', name:'Privacy', component: Privacy},
     {path: '/account', name:'Account', component: Account},
-    {path: '/terms', name:'Terms', component: Terms}
-
+    {path: '/terms', name:'Terms', component: Terms},
+    {path: '/forgot_password', name: 'ForgotPassword', component: ForgotPassword},
+    {path: '/password_resets/:token',name: 'ResetPassword',component: ResetPassword},
+    {path: '/admin/users/:id',name: 'UserEdit',component: UserEdit}
   ]
 })

@@ -27,6 +27,7 @@
           Sign Up
         </button>
       </router-link>
+      <router-link to="/forgot_password">Forgot Password</router-link>
     </div>
   </div>
 </template>
@@ -40,7 +41,8 @@ export default {
       email: '',
       password: '',
       error: '',
-      toggle: true
+      toggle: true,
+      data: {}
     }
   },
   created () {
@@ -50,28 +52,31 @@ export default {
     this.checkSignedIn()
   },
   methods: {
-    signin () {
-      this.$http.plain.post('/signin', {
+    async signin () {
+      await this.$http.plain.post('/signin', {
         email: this.email,
         password: this.password
       })
-        .then(response => this.signinSuccessful(response))
-        .catch(error => this.signinFailed(error))
+      .then(response => this.signinSuccessful(response))
+      .catch(error => this.signinFailed(error))
     },
-    signinSuccessful (response) {
+    async signinSuccessful (response) {
       if (!response.data.csrf) {
         this.signinFailed(response)
         return
       }
       console.log(response)
-      this.$http.plain.get('/me')
+       await this.$http.plain.get('/me')
         .then(meResponse => {
-          console.log("me rsponse", meResponse)
+          alert("me response", meResponse)
           this.$store.commit('setCurrentUser', { currentUser: meResponse.data, csrf: response.data.csrf })
           this.error = ''
           this.$router.go('/')
         })
         .catch(error => this.signinFailed(error))
+    },
+    roleCheck () {
+
     },
     signinFailed (error) {
       console.log("me error", error)
