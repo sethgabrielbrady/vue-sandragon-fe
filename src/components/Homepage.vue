@@ -22,7 +22,7 @@
             <br>virtual table top.
           </div>
         </slide>
-        <slide class="flex flex-col justify-center ">
+        <slide class="flex flex-col justify-center">
           <div class="text-center text-2xl text-white homepage-bold w-3/5 m-auto">
             {{ $store.state.materialBlurb }}
           </div>
@@ -110,7 +110,7 @@ export default {
 }
 </script>
 
-<style scoped style="sass">
+<style scoped lang="scss">
   .homepage-img {
     /* background-image: url('https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg');
     background-size: cover; */
