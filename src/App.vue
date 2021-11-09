@@ -1,6 +1,7 @@
 <template>
   <div
     id="app"
+    class="dark-blue-bg"
   >
     <div
       class="fixed rounded max-w-sm m-auto my-8 shadow"
@@ -54,6 +55,9 @@ export default {
 }
 </script>
 <style>
+  .dark-blue-bg {
+    background-color:rgba(015,016,047,1) !important;
+  }
   .dimbackground {
      background-color:rgba(0,0,0,0.50);
      pointer-events: none;

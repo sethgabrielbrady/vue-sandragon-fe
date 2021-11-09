@@ -1,6 +1,7 @@
 <template>
   <div class="relative">
-    <img
+    <Fire  class="fixed" style="left:calc(25% + 8vw);top: 0%;"/>
+    <!-- <img
       class="homepage-img"
       sizes="(max-width: 1400px) 100vw, 1400px"
       srcset="
@@ -11,9 +12,9 @@
         ../assets/bg_1274.jpg 1274w,
         ../assets/bg_1400.jpg 1400w"
       src="../assets/bg_1400.jpg"
-      alt="" />
+      alt="" /> -->
 
-    <div class="w-full m-auto absolute" style="top:35%;">
+    <!-- <div class="w-full m-auto absolute" style="top:35%;">
       <carousel :per-page="1" autoplay="true" class="m-auto">
         <slide class="flex flex-col justify-center ">
           <div class="text-center text-5xl text-white homepage-bold w-3/5 m-auto py-10">
@@ -51,18 +52,19 @@
       </carousel>
       <br>
       <br>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel';
-
+// import { Carousel, Slide } from 'vue-carousel';
+import Fire from './animations/Fire.vue'
 export default {
   name: 'homepage',
   components: {
-    Carousel,
-    Slide
+    Fire
+    // Carousel,
+    // Slide
   },
   data () {
     return {
@@ -119,6 +121,7 @@ export default {
     width: 100vw;
     filter: brightness(110%);
     top: 0px;
+    background-color:rgba(015,016,047,1) !important;
   }
   .homepage-bold {
     font-weight: 600;
