@@ -42,8 +42,9 @@
               <svg v-if="updateSubmit" @click="updatesCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <input v-else type="checkbox" class="input border rounded p-2 " @click="updatesCheck()" id="Updates" required>
+              <input v-else type="checkbox" class="input border rounded p-2 " @click="updatesCheck()" id="Updates">
             </div>
+
             <label class="ml-6 label text-xs">
               Would you like to receive email updates about Sandragon?
             </label>
@@ -97,13 +98,14 @@ export default {
   },
   methods: {
      signup () {
-     this.$http.plain.post('/signup', {
-        email: this.email,
-        password: this.password,
-        password_confirmation: this.password_confirmation
-      })
-        .then(response => this.signupSuccessful(response))
-        .catch(error => this.signupFailed(error))
+      this.$http.plain.post('/signup', {
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+          username: this.username
+        })
+          .then(response => this.signupSuccessful(response))
+          .catch(error => this.signupFailed(error))
     },
     signupSuccessful (response) {
       if (!response.data.csrf) {
