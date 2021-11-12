@@ -68,7 +68,6 @@ export default {
       console.log(response)
        await this.$http.plain.get('/me')
         .then(meResponse => {
-          alert("me response", meResponse)
           this.$store.commit('setCurrentUser', { currentUser: meResponse.data, csrf: response.data.csrf })
           this.error = ''
           this.$router.go('/')
