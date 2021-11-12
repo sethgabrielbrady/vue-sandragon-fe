@@ -97,7 +97,7 @@ export default {
     this.checkedSignedIn()
   },
   methods: {
-     signup () {
+    signup () {
       this.$http.plain.post('/signup', {
           email: this.email,
           password: this.password,
@@ -111,7 +111,31 @@ export default {
       if (!response.data.csrf) {
         this.signupFailed(response)
         return
+      }else {
+        this.signin(this.email, this.password)
+        this.checkedSignIn();
       }
+    },
+    async signin (email, password) {
+      await this.$http.plain.post('/signin', {
+        email: email,
+        password: password
+      })
+      .then(response => this.signinSuccessful(response))
+      .catch(error => this.signupFailed(error))
+    },
+    async signinSuccessful (response) {
+      if (!response.data.csrf) {
+        this.signupFailed(response)
+        return
+      }
+      await this.$http.plain.get('/me')
+        .then(meResponse => {
+          this.$store.commit('setCurrentUser', { currentUser: meResponse.data, csrf: response.data.csrf })
+          this.error = ''
+          this.$router.go('/')
+        })
+        .catch(error => this.signupFailed(error))
     },
     signupFailed (error) {
       this.error = (error.response && error.response.data && error.response.data.error) || ''
