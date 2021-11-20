@@ -76,7 +76,7 @@ export default {
       return
     }
 
-    document.querySelector("#title").value = this.material.title;
+    // document.querySelector("#title").value = this.material.title;
   },
   methods: {
     uploadFile () {
