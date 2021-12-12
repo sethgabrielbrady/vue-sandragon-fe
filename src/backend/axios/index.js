@@ -21,13 +21,24 @@ const plainAxiosInstance = axios.create({
 
 const uploadFileAxiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     'Content-Type': 'multipart/form-data'
   }
 })
 
 securedAxiosInstance.interceptors.request.use(config => {
+  const method = config.method.toUpperCase()
+  if (method !== 'OPTIONS' && method !== 'GET') {
+    config.headers = {
+      ...config.headers,
+      'X-CSRF-TOKEN': store.state.csrf
+    }
+  }
+  return config
+})
+
+uploadFileAxiosInstance.interceptors.request.use(config => {
   const method = config.method.toUpperCase()
   if (method !== 'OPTIONS' && method !== 'GET') {
     config.headers = {
