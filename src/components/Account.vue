@@ -36,9 +36,6 @@ export default {
         .then(response => { this.user = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
 
-      this.email = this.user.email
-      this.userName = this.user.username
-      console.log("user", this.user);
     }else {
       return;
     }

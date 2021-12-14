@@ -17,7 +17,7 @@
           <p class="text-white px-2 no-underline inline block nav-link" v-if="!signedIn()" @click="checkUrl">Sign in</p>
           <div class="dropdown rounded-lg" v-if="signedIn()">
             <div class="nav-link">
-              <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" class="w-7 h-7 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
+              <img :src="this.$store.state.currentUser.image_url" class="w-7 h-7 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
               <p v-if="this.$store.state.currentUser.username" class="inline-block text-white nav-link" style="font-size: 0.85rem;">{{this.$store.state.currentUser.username}}</p>
               <p v-else class="inline-block text-white nav-link small">{{ this.$store.state.currentUser.email }}</p>
             </div>
@@ -45,7 +45,7 @@ export default {
     }
   },
   created () {
-    this.signedIn()
+    this.signedIn();
   },
   methods: {
     setError (error, text) {
@@ -57,7 +57,7 @@ export default {
     signOut () {
       this.$http.secured.delete('/signin')
         .then((response) => {
-          console.log('respowne', response);
+          console.log('response', response);
           this.$store.commit('unsetCurrentUser')
           this.$router.go('/')
         })
