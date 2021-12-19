@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <p>Account</p>
-    <p>{{ userName }}</p>
-    <img :src="user.image_url" class="mx-1 border" width="50%" height="auto" />
-
-    <form>
-      <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">User Image</label>
-      <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
-      <br>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click=createItem()>Upload</button>
-    </form>
+  <div style="width:100%;">
+    <div class="items-center p-10">
+      <p>Account</p>
+      <p>{{ userName }}</p>
+      <img :src="this.$store.state.currentUser.image_url" class="w-40 h-40 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
+      <form>
+        <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">User Image</label>
+        <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
+        <br>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click=createItem()>Upload</button>
+      </form>
+    </div>
   </div>
 </template>
 
