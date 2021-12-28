@@ -7,8 +7,11 @@
         <p class="bg-blue-200 rounded w-2/5 mx-auto py-2 text-blue-500 mb-12" style="font-size:2rem;">Material Editor</p>
         <form class="bg-white px-8 pt-6 pb-8 mb-4 shadow rounded">
           <img :src="material.image_url" class="w-3/5 mx-auto mt-12 "/>
-          <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">Preview Image</label>
-          <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
+          <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">Upload Preview Image</label>
+          <input class="mb-4" type="file" name="image" ref="inputPic" @change=uploadImage()>
+
+          <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="file">Upload PDF</label>
+          <input class="mb-4" type="file" name="file" ref="inputPdf" @change=uploadFile()>
 
           <div class="mb-6">
             <label for="title" class="label">Title</label><br>
@@ -50,7 +53,8 @@ export default {
   name: 'Editor',
   data () {
     return {
-      inputPicture: null,
+      inputImage: null,
+      inputFile: null,
       materialId: null,
       title: "",
       description: "",
@@ -80,7 +84,10 @@ export default {
   },
   methods: {
     uploadFile () {
-      this.inputPicture = this.$refs.inputFile.files[0];
+      this.inputFile = this.$refs.inputPdf.files[1];
+    },
+     uploadImage () {
+      this.inputImage = this.$refs.inputPic.files[0];
     },
     deleteItemCheck () {
       this.toggleDelete();
@@ -95,7 +102,8 @@ export default {
     },
     createItem: function() {
       const params = {
-        'image': this.inputPicture
+        'image': this.inputImage,
+        'file': this.inputFile
       }
 
       let formData = new FormData()
@@ -104,7 +112,11 @@ export default {
       )
 
       if(this.materialId){
-        if(this.inputPicture){
+        if(this.inputImage){
+          this.$http.uploadImage.patch(`/materials/${this.materialId}`,
+          formData)
+        }
+        if(this.inputFile){
           this.$http.uploadFile.patch(`/materials/${this.materialId}`,
           formData)
         }
