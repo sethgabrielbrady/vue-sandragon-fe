@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     uploadFile () {
-      this.inputFile = this.$refs.inputPdf.files[1];
+      this.inputFile = this.$refs.inputPdf.files[0];
     },
      uploadImage () {
       this.inputImage = this.$refs.inputPic.files[0];
@@ -111,6 +111,11 @@ export default {
         ([key, value]) => formData.append(key, value)
       )
 
+      let fileData = new FormData()
+      Object.entries(params).forEach(
+        ([key, value]) => fileData.append(key, value)
+      )
+
       // if(this.materialId){
         if(this.inputImage){
           this.$http.uploadImage.patch(`/materials/${this.materialId}`,
@@ -118,7 +123,7 @@ export default {
         }
         if(this.inputFile){
           this.$http.uploadFile.patch(`/materials/${this.materialId}`,
-          formData)
+          fileData)
         }
 
         // FIX THIS
