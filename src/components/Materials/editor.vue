@@ -111,7 +111,7 @@ export default {
         ([key, value]) => formData.append(key, value)
       )
 
-      if(this.materialId){
+      // if(this.materialId){
         if(this.inputImage){
           this.$http.uploadImage.patch(`/materials/${this.materialId}`,
           formData)
@@ -121,23 +121,25 @@ export default {
           formData)
         }
 
-        this.$http.plain.patch(`/materials/${this.materialId}`, {
-          material: {
-            title: this.title,
-            description: this.description,
-            blurb: this.blurb,
-            slug: this.slug
-          }
-        })
-      } else {
-        this.$http.plain.post("/materials/", {
-          title: this.title,
-          description: this.description,
-          blurb: this.blurb,
-          slug: this.slug,
-        })
-      }
-      window.location = "/materials/editor";
+        // FIX THIS
+        // this.$http.plain.patch(`/materials/${this.materialId}`, {
+        //   material: {
+        //     title: this.title,
+        //     description: this.description,
+        //     blurb: this.blurb,
+        //     slug: this.slug
+        //   }
+        // })
+      // } else { //create content
+        // this.$http.plain.post("/materials/", {
+        //   title: this.title,
+        //   description: this.description,
+        //   blurb: this.blurb,
+        //   slug: this.slug,
+        // })
+      // }
+
+      // window.location = "/materials/editor";
     },
     setActive () {
       let activeSlug = this.material.slug;
