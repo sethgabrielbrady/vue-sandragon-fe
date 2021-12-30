@@ -17,13 +17,21 @@
         <div class="mx-auto w-3/5 text-center p-4 mt-4">
           <p>{{material.description}}</p>
         </div>
-        <button
-          v-if="isSignedIn()"
-          class=" bg-orange download-btn text-sm no-underline font-bold py-2 px-4 rounded shadow text-white"
-          @click="addMaterial()"
-          >
-            Download
-        </button>
+        <div v-if="isSignedIn()">
+          <a
+            v-if="material.file_url"
+            class=" bg-orange download-btn text-sm no-underline font-bold py-2 px-4 rounded shadow text-white"
+            :href="material.file_url"
+            >
+              Download
+          </a>
+          <p
+            v-if="isAdmin() && !material.file_url"
+            class="bg-red-200 text-sm no-underline font-bold py-2 px-4 border-2 border-red"
+            >
+              No File Uploaded
+          </p>
+        </div>
       </div>
     </div>
   </div>
