@@ -10,9 +10,6 @@
           <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">Upload Preview Image</label>
           <input class="mb-4" type="file" name="image" ref="inputPic" @change=uploadImage()>
 
-          <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="file">Upload PDF</label>
-          <input class="mb-4" type="file" name="file" ref="inputPdf" @change=uploadFile()>
-
           <div class="mb-6">
             <label for="title" class="label">Title</label><br>
             <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title">
@@ -31,6 +28,13 @@
           <div class="mb-6">
             <label for="slug" class="label">Slug</label><br>
             <input type="title" v-model="slug" class="input border rounded p-2 w-full" id="body" :placeholder="material.slug" />
+          </div>
+
+          <div class="border-blue-500 border-2 mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="file">Upload PDF or Zip</label>
+            <input class="mb-4" type="file" name="file" ref="inputPdf" @change=uploadPdf()>
+            <p v-if="material.file_url" class="bg-green-200 rounded w-2/5 mx-auto py-2 text-green-500 mb-6" style="font-size:2rem;">File Uploaded</p>
+            <p v-else class="bg-red-200 rounded w-2/5 mx-auto py-2 text-red-500 mb-6" style="font-size:2rem;">No File Uploaded</p>
           </div>
 
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" v-if="(materialId === null)"  @click="createItem">Create</button>
@@ -83,7 +87,7 @@ export default {
     // document.querySelector("#title").value = this.material.title;
   },
   methods: {
-    uploadFile () {
+    uploadPdf () {
       this.inputFile = this.$refs.inputPdf.files[0];
     },
      uploadImage () {
@@ -101,24 +105,27 @@ export default {
       this.showModal = !this.showModal;
     },
     createItem: function() {
-      const params = {
-        'image': this.inputImage,
+      const imageparams = {
+        'image': this.inputImage
+      }
+
+      const fileparams = {
         'file': this.inputFile
       }
 
       let formData = new FormData()
-      Object.entries(params).forEach(
+      Object.entries(imageparams).forEach(
         ([key, value]) => formData.append(key, value)
       )
 
       let fileData = new FormData()
-      Object.entries(params).forEach(
+      Object.entries(fileparams).forEach(
         ([key, value]) => fileData.append(key, value)
       )
 
       // if(this.materialId){
         if(this.inputImage){
-          this.$http.uploadImage.patch(`/materials/${this.materialId}`,
+          this.$http.uploadFile.patch(`/materials/${this.materialId}`,
           formData)
         }
         if(this.inputFile){
