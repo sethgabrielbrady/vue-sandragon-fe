@@ -123,7 +123,8 @@ export default {
         ([key, value]) => fileData.append(key, value)
       )
 
-      // if(this.materialId){
+      // FIX  - unable to upload a file and update text at the same time.
+      if(this.materialId){
         if(this.inputImage){
           this.$http.uploadFile.patch(`/materials/${this.materialId}`,
           formData)
@@ -133,25 +134,20 @@ export default {
           fileData)
         }
 
-        // FIX THIS
-        // this.$http.plain.patch(`/materials/${this.materialId}`, {
-        //   material: {
-        //     title: this.title,
-        //     description: this.description,
-        //     blurb: this.blurb,
-        //     slug: this.slug
-        //   }
-        // })
-      // } else { //create content
-        // this.$http.plain.post("/materials/", {
-        //   title: this.title,
-        //   description: this.description,
-        //   blurb: this.blurb,
-        //   slug: this.slug,
-        // })
-      // }
-
-      // window.location = "/materials/editor";
+        this.$http.plain.patch(`/materials/${this.materialId}`, {
+          title: this.title,
+          description: this.description,
+          blurb: this.blurb,
+          slug: this.slug
+        })
+      } else { //create content
+        this.$http.plain.post("/materials/", {
+          title: this.title,
+          description: this.description,
+          blurb: this.blurb,
+          slug: this.slug,
+        })
+      }
     },
     setActive () {
       let activeSlug = this.material.slug;
