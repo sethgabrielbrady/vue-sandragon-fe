@@ -19,7 +19,7 @@
         </a>
       </div>
       <p class="text-white my-3 sd-font-light-blue">Follow @sandragongame on social media.</p>
-      <div class="mx-auto w-1/3 text-center my-2 rounded bg-white">
+      <div class="mx-auto w-4/5 md:w-1/3 text-center my-2 rounded bg-white">
         <form class="flex flex-row w-full rounded">
           <!-- <input type="email" v-model="email" class="input border left-rounded p-1 w-full" id="email" placeholder="Email"> -->
           <input type="email" class="input border rounded p-1 w-full bg-sd-dark-blue" id="email" placeholder="Email">
@@ -48,7 +48,7 @@
       style="z-index: 5 height: 100vh; cursor: none;"
     >
       <div
-        class="fixed rounded w-2/3 m-auto my-8 shadow"
+        class="fixed rounded w-4/5 md:w-2/3 m-auto my-8 shadow"
         style="z-index: 4; background: white; transform: translate(calc(16vw), calc(25vh - 10%)); min-height:auto; top:0px;"
         v-on-clickaway="toggleContact"
       >
