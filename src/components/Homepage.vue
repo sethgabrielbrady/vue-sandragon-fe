@@ -14,8 +14,17 @@
       src="../assets/bg_1400.jpg"
       alt="" /> -->
 
-    <!-- <div class="w-full m-auto absolute" style="top:35%;">
-      <carousel :per-page="1" autoplay="true" class="m-auto">
+    <div class="w-full m-auto absolute" style="top:20%;">
+      <div class="text-center text-5xl text-white homepage-bold w-3/5 m-auto py-10">
+        A new system that will bring
+        <br>remote players to the same
+        <br>virtual table top.
+      </div>
+      <div class="text-center text-3xl sd-font-light-blue homepage-bold w-3/5 m-auto py-10">
+        Compatible with Dungeons & Dragons® 5e, GURPS® and
+        the soon to come,  Sandragon.
+      </div>
+      <!-- <carousel :per-page="1" autoplay="true" class="m-auto">
         <slide class="flex flex-col justify-center ">
           <div class="text-center text-5xl text-white homepage-bold w-3/5 m-auto py-10">
             A new system that will bring
@@ -49,10 +58,10 @@
             best of all, our very own Sandragon
           </div>
         </slide>
-      </carousel>
+      </carousel> -->
       <br>
       <br>
-    </div> -->
+    </div>
   </div>
 </template>
 
