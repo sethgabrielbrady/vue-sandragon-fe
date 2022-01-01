@@ -27,7 +27,7 @@
 
           <div class="mb-6 relative">
             <div class="absolute" style="display: inline-block; top: 2px;">
-              <svg v-if="visibleSubmit" @click="termsCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg v-if="acceptTerms" @click="termsCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
               <input v-else type="checkbox" class="input border rounded p-2" @click="termsCheck()" id="Terms" required>
@@ -39,17 +39,17 @@
 
           <div class="mb-6 relative">
             <div class="absolute" style="display: inline-block; top: 2px; ">
-              <svg v-if="updateSubmit" @click="updatesCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg v-if="receiveEmails" @click="receiveEmailsCheck()" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <input v-else type="checkbox" class="input border rounded p-2 " @click="updatesCheck()" id="Updates" required>
+              <input v-else type="checkbox" class="input border rounded p-2 " @click="receiveEmailsCheck()" id="Updates">
             </div>
             <label class="ml-6 label text-xs">
               Would you like to receive email updates about Sandragon?
             </label>
           </div>
 
-          <button v-if="visibleSubmit" type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 w-full">Sign Up</button>
+          <button v-if="acceptTerms" type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded my-2 w-full">Sign Up</button>
           <button v-else class="bg-gray-400 text-white font-bold py-2 px-4 rounded my-2 w-full" style="pointer-events:none;">Sign Up</button>
 
         </form>
@@ -63,21 +63,12 @@
         </div>
       </div>
     </div>
-    <div v-if="showTerms()">
-      <Terms />
-    </div>
   </div>
 </template>
 
 <script>
-import Terms from '@/components/Terms'
-
 export default {
   name: 'Signup',
-
-  components: {
-    Terms
-  },
   data () {
     return {
       email: '',
@@ -85,8 +76,8 @@ export default {
       password_confirmation: '',
       username: '',
       error: '',
-      visibleSubmit: false,
-      updateSubmit: false
+      acceptTerms: false,
+      receiveEmails: false
     }
   },
   created () {
@@ -96,20 +87,49 @@ export default {
     this.checkedSignedIn()
   },
   methods: {
-     signup () {
-     this.$http.plain.post('/signup', {
-        email: this.email,
-        password: this.password,
-        password_confirmation: this.password_confirmation
-      })
-        .then(response => this.signupSuccessful(response))
-        .catch(error => this.signupFailed(error))
+    signup () {
+      if(this.acceptTerms){
+        this.$http.plain.post('/signup', {
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.password_confirmation,
+            username: this.username,
+            terms_of_service: this.acceptTerms,
+            receive_emails: this.receiveEmails
+          })
+            .then(response => this.signupSuccessful(response))
+            .catch(error => this.signupFailed(error))
+      }
     },
     signupSuccessful (response) {
       if (!response.data.csrf) {
         this.signupFailed(response)
         return
+      }else {
+        this.signin(this.email, this.password)
+        this.checkedSignIn();
       }
+    },
+    async signin (email, password) {
+      await this.$http.plain.post('/signin', {
+        email: email,
+        password: password
+      })
+      .then(response => this.signinSuccessful(response))
+      .catch(error => this.signupFailed(error))
+    },
+    async signinSuccessful (response) {
+      if (!response.data.csrf) {
+        this.signupFailed(response)
+        return
+      }
+      await this.$http.plain.get('/me')
+        .then(meResponse => {
+          this.$store.commit('setCurrentUser', { currentUser: meResponse.data, csrf: response.data.csrf })
+          this.error = ''
+          this.$router.go('/')
+        })
+        .catch(error => this.signupFailed(error))
     },
     signupFailed (error) {
       this.error = (error.response && error.response.data && error.response.data.error) || ''
@@ -120,14 +140,11 @@ export default {
         this.$router.replace('/')
       }
     },
-    showTerms(){
-      return this.visibleTerms;
-    },
     termsCheck(){
-      this.visibleSubmit = !this.visibleSubmit
+      this.acceptTerms = !this.acceptTerms
     },
-    updatesCheck(){
-      this.updateSubmit = !this.updateSubmit
+    receiveEmailsCheck(){
+      this.receiveEmails = !this.receiveEmails
     }
   }
 }

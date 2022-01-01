@@ -1,14 +1,86 @@
 <template>
-  <div class="max-w-lg m-auto py-40">
-    We’ve been traditional table-top gaming for a long time and decided to try out some virtual table-tops.
-    Ultimately, we found the interface cumbersome and the experience lacking. Over the years, we’d hash out
-    our various issues and frustrations with the medium and realized we had some pretty great ideas of our own.
-    Eventually we came to the conclusion that the only way we’d get the system that we wanted was to build it ourselves.
-    And that’s what we’ve decided to do. We’re now creating Sandragon - a new way to create, share, play and relish
-    TTRPGS online. Sandragon will offer robust GM tools for quicker, easier campaign planning, custom content
-    creation that will let you craft, share and even sell homebrewed excellence, an advanced play-by-post
-    system to keep the game alive between sessions and a custom system designed exclusively for the Sandragon platform.
-    Best of all it’s free to play. Join us online at sandragon.io, follow us on (social media icons)and make sure to
-    sign up for our newsletter. Let's put mediocre gaming experiences to the sword!
+  <div style="width:100%;">
+    <div class="items-center p-10">
+      <p>Account</p>
+      <p>{{ userName }}</p>
+      <img :src="this.$store.state.currentUser.image_url" class="w-40 h-40 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
+      <form>
+        <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">User Image</label>
+        <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
+        <br>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click=createItem()>Upload</button>
+      </form>
+    </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: 'Account',
+
+  data () {
+    return {
+      userPicture: null,
+      userName: "Default",
+      userImage: null,
+      email: "",
+      user: [],
+      userId: this.$store.getters.currentUserId
+    }
+  },
+  created (){
+    if ( !this.signedIn() ){
+      this.$router.replace('/');
+    }else if(this.userId){
+      this.$http.plain.get(`/users/${this.userId}`)
+        .then(response => { this.user = response.data })
+        .catch(error => this.setError(error, 'Something went wrong'))
+
+    }else {
+      return;
+    }
+  },
+  methods: {
+     uploadFile () {
+      this.userPicture = this.$refs.inputFile.files[0];
+    },
+    createItem: function() {
+      const params = {
+        'image': this.userPicture
+      }
+
+      let formData = new FormData()
+      Object.entries(params).forEach(
+        ([key, value]) => formData.append(key, value)
+      )
+
+      if(this.userPicture){
+        this.$http.uploadFile.patch(`/users/${this.userId}`, formData)
+      }
+
+      // this.$http.plain.patch(`/posts/${this.userId}`, {
+      //   user: {
+      //     userName: this.userName,
+      //     email: this.email
+      //   }
+      // })
+    },
+    setError (error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
+    signedIn () {
+      return this.$store.state.signedIn
+    },
+    updateUser () {
+      this.$http.plain.patch(`/user/${this.userId}`, {
+        user: {
+          userName: this.title,
+          email: this.body
+        }
+      })
+    }
+  }
+}
+</script>
+

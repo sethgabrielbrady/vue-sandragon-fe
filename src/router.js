@@ -17,6 +17,8 @@ import Terms from '@/components/Terms'
 import ForgotPassword from '@/components/ForgotPassword'
 import ResetPassword from '@/components/ResetPassword'
 import UserEdit from '@/components/admin/users/Edit'
+import UserList from '@/components/admin/users/List'
+
 
 export default new Router({
   mode: 'history',
@@ -39,6 +41,8 @@ export default new Router({
     {path: '/terms', name:'Terms', component: Terms},
     {path: '/forgot_password', name: 'ForgotPassword', component: ForgotPassword},
     {path: '/password_resets/:token',name: 'ResetPassword',component: ResetPassword},
-    {path: '/admin/users/:id',name: 'UserEdit',component: UserEdit}
+    {path: '/admin/users/:id',name: 'UserEdit',component: UserEdit},
+    {path: '/admin/users',name: 'UserList',component: UserList}
+
   ]
 })
