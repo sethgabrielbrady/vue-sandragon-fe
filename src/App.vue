@@ -1,5 +1,6 @@
 <template>
   <div
+    class=" bg-sd-light-blue"
     id="app"
   >
     <div

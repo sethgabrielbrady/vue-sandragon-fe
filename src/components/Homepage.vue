@@ -1,6 +1,6 @@
 <template>
-  <div class="relative">
-    <img
+  <div class="relative opaque-dark-blue">
+    <!-- <img
       class="homepage-img"
       sizes="(max-width: 1400px) 100vw, 1400px"
       srcset="
@@ -11,10 +11,18 @@
         ../assets/bg_1274.jpg 1274w,
         ../assets/bg_1400.jpg 1400w"
       src="../assets/bg_1400.jpg"
-      alt="" />
+      alt="" /> -->
 
-    <div class="w-full m-auto absolute" style="top:35%;">
-      <carousel :per-page="1" autoplay="true" class="m-auto">
+    <div class="w-full m-auto absolute" style="top:25%;">
+      <div class="text-center text-3xl md:text-5xl text-white homepage-bold w-4/5 md:w-3/5 m-auto pt-0 pb-10 md:pt-10">
+        A new system that will bring
+        remote players to the same
+        virtual table top.
+      </div>
+      <div class="text-center text-2xl md:text-3xl text-white homepage-bold w-4/5 md:w-3/5 m-auto pb-10">
+          Compatible with Dungeons & Dragons® 5e, GURPS® and the soon to be released <span class="sd-font-orange">Sandragon System</span>
+      </div>
+      <!-- <carousel :per-page="1" autoplay="true" class="m-auto">
         <slide class="flex flex-col justify-center ">
           <div class="text-center text-5xl text-white homepage-bold w-3/5 m-auto py-10">
             A new system that will bring
@@ -48,7 +56,7 @@
             best of all, our very own Sandragon
           </div>
         </slide>
-      </carousel>
+      </carousel> -->
       <br>
       <br>
     </div>
@@ -56,13 +64,13 @@
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel';
+// import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   name: 'homepage',
   components: {
-    Carousel,
-    Slide
+    // Carousel,
+    // Slide
   },
   data () {
     return {
@@ -112,8 +120,8 @@ export default {
 
 <style scoped lang="scss">
   .homepage-img {
-    /* background-image: url('https://www.sandragon.io/static/media/ADJ_AdobeStock_173514908.4a616bdb.jpg');
-    background-size: cover; */
+    background-image: url('../assets/bg_1400.jpg');
+    background-size: cover;
     height: auto;
     position: fixed;
     width: 100vw;
