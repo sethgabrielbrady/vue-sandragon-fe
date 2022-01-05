@@ -14,17 +14,17 @@
     </div>
     <ul
       v-else
-      class="list-reset mt-12 masonry"
+      class="list-reset my-12 masonry"
     >
       <li
-        class="break-inside rounded-lg shadow-lg cursor-pointer relative"
+        class="break-inside rounded-lg shadow-lg cursor-pointer relative mason-card"
         v-for="material in materials"
         :key="material.id"
         :material="material"
         @click="viewContent(material.slug)">
           <img :src="material.image_url" class="border rounded-lg mason-image" style="object-fit: contain;" />
           <div class="text-center absolute p-4 w-full" style="top: 10%; overflow:hidden;">
-            <p class="font-semibold pt-3 text-center relative mason-title">{{ material.title }}</p>
+            <p class="font-semibold pt-3 text-2xl md:text-lg text-center relative mason-title">{{ material.title }}</p>
             <p class="font-semibold pt-3 mason-text text-center relative" style="font-size: .75rem;">{{ teaser(material.description) }}...</p>
           </div>
         </li>
@@ -90,9 +90,7 @@ export default {
   opacity: 1 !important;
   color: white;
 }
-.mason-image {
-  filter: brightness(70%);
-}
+
 .break-inside:hover > .mason-image {
   filter: brightness(30%);
 }
