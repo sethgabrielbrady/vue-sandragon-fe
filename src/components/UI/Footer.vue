@@ -1,12 +1,7 @@
 <template>
   <div class="relative">
-    <footer class="py-3 flex flex-col md:flex-row justify-around md:justify-between text-center" style="z-index: 3; width: 100%; bottom: 0px;">
-      <div class="flex flex-col">
-        <img src="../../assets/sandragon_blue.png" class="m-auto" style="width: 70px;">
-        <p class="text-white my-2 m-auto sd-font-light-blue">
-          PRIVACY | TERMS OF SERVICE
-        </p>
-      </div>
+    <footer class="py-3 md:py-20  px-6 lg:px-40 flex flex-col md:flex-row justify-around md:justify-between text-center" style="z-index: 3; width: 100%; bottom: 0px;">
+
       <div class="flex flex-col">
         <div class="flex flex-row justify-center my-2 mt-4 sd-font-light-blue">
           <a href="https://twitter.com/sandragongame" target="_blank">
@@ -26,6 +21,13 @@
           </a>
         </div>
         <p class="text-white my-3 sd-font-light-blue">Follow @sandragongame on social media.</p>
+      </div>
+
+       <div class="flex flex-col">
+        <img src="../../assets/sandragon_blue.png" class="m-auto" style="width: 70px;">
+        <p class="text-white my-2 m-auto sd-font-light-blue">
+          PRIVACY | TERMS OF SERVICE
+        </p>
       </div>
       <div class="flex flex-col">
 
