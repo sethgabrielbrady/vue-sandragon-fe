@@ -1,14 +1,12 @@
 <template>
   <div class="relative">
     <footer>
-      <div class="py-3 w-4/5 md:w-3/5 mx-auto flex flex-col md:flex-row justify-around">
-
+      <div class="py-3 w-full md:w-3/5 mx-auto flex flex-col flex-col-reverse md:flex-row justify-around">
 
         <div class="flex flex-col">
-
           <div class="flex flex-col justify-center text-left">
-            <p class="text-white my-2 inline-block text-sm">
-              <router-link to="/content" class=" py-1 no-underline block">
+            <p class="text-white mb-2 inline-block text-sm">
+              <router-link to="/content" class=" pb-1 no-underline block">
                 CONTENT
               </router-link>
               <!-- <router-link to="/about" class=" py-1 no-underline block">
@@ -55,7 +53,7 @@
                 <button class="bg-sd-light-blue text-white py-1 px-4 " style="width: 200px; border-radius:0px 5px 5px 0px;">Join</button>
               </form>
             </div>
-            <div class="flex flex-col ">
+            <div class="flex flex-col hidden md:show ">
               <img src="../../assets/sandragon_blue.png" class="m-auto pt-4 " style="width: 90px;">
             </div>
           </div>

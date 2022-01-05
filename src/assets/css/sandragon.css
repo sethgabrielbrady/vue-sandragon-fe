@@ -12,20 +12,20 @@ header, footer {
 
 footer {
   padding: 2em;
-  height: 300px;
+  height: max-content;
 }
 
 /* md */
 @media only screen and (max-width: 768px) {
   footer {
-    height: 325px;
+    height: max-content;
   }
 }
 /* sm */
 @media only screen and (max-width: 640px) {
-  footer {
+  /* footer {
     height: 400px;
-  }
+  } */
 }
 
 .sd-dark-blue {
