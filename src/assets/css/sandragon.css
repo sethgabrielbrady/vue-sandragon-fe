@@ -11,12 +11,12 @@ header, footer {
 }
 
 footer {
-  padding: 0 20%;
-  height: 250px;
+  padding: 2em;
+  height: 300px;
 }
 
 /* md */
-@media only screen and (max-width: 6768px) {
+@media only screen and (max-width: 768px) {
   footer {
     height: 325px;
   }
