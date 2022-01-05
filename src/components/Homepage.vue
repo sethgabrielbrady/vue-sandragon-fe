@@ -1,7 +1,9 @@
 <template>
   <div class="relative">
-    <Fire  class="fixed" style="left:calc(25% + 8vw);top: 0%;"/>
-    <!-- <img
+    <!-- <Fire  class="fixed" style="left:calc(25% + 8vw);top: 0%; z-index:100; opacity:0.3;"/> -->
+    <Fire  class="fixed" style="top: -10%; z-index:100; opacity:0.4;"/>
+    <img
+      style="opacity: 0.4;"
       class="homepage-img"
       sizes="(max-width: 1400px) 100vw, 1400px"
       srcset="
@@ -12,15 +14,15 @@
         ../assets/bg_1274.jpg 1274w,
         ../assets/bg_1400.jpg 1400w"
       src="../assets/bg_1400.jpg"
-      alt="" /> -->
+      alt="" />
 
-    <div class="w-full m-auto absolute" style="top:20%;">
+    <div class="w-full m-auto absolute" style="top:20%; z-index: 102;">
       <div class="text-center text-5xl text-white homepage-bold w-3/5 m-auto py-10">
         A new system that will bring
         <br>remote players to the same
         <br>virtual table top.
       </div>
-      <div class="text-center text-3xl sd-font-light-blue homepage-bold w-3/5 m-auto py-10">
+      <div class="text-center text-3xl text-white homepage-bold w-3/5 m-auto py-10">
         Compatible with Dungeons & Dragons® 5e, GURPS® and
         the soon to come,  Sandragon.
       </div>

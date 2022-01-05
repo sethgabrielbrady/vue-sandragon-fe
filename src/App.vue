@@ -9,7 +9,7 @@
       v-if="toggle"
       v-on-clickaway="toggleModal"
     >
-      <Signin/>
+      <Signin class="relative" style="z-index: 200 !important;" />
     </div>
     <Header @toggleSignin="toggleModal"/>
     <div @toggleSignin="toggleModal" >

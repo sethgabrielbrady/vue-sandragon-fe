@@ -55,19 +55,19 @@
 <style lang="scss">
   $fireColor: rgb(255,80,0);
   $fireColorT: rgba(255,80,0,0);
-  $dur: 6s;
-  $blur: 0.015em;
+  $dur: 1s;
+  $blur: 0.02em;
   $fireRad: 3em;
   $parts: 50;
-  $partSize: 5.5em;
+  $partSize: 5em;
 
   .fire {
-    font-size: 55px;
+    font-size: 49px;
     filter: blur($blur);
     -webkit-filter: blur($blur);
     margin: 3em auto 0 auto;
     position: relative;
-    width: 100%;
+    width: 10em;
     height: 12em;
   }
   .particle {
@@ -75,7 +75,7 @@
     background-image: radial-gradient($fireColor 20%,$fireColorT 70%);
     border-radius: 50%;
     mix-blend-mode: screen;
-    opacity: 1;
+    opacity: 0;
     position: absolute;
     bottom: 0;
     width: $partSize;

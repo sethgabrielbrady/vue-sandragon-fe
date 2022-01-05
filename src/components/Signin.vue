@@ -1,5 +1,5 @@
 <template>
-  <div id="signin-modal" class="max-w-sm m-auto" v-if="this.toggle">
+  <div id="signin-modal" class="max-w-sm m-auto relative" v-if="this.toggle" style="z-index:200;">
     <div class="p-4">
       <h3 class="text-2xl my-6 text-grey-darkest text-center">Welcome back!</h3>
       <form @submit.prevent="signin">
