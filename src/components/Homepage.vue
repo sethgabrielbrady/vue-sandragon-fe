@@ -19,7 +19,7 @@
         remote players to the same
         virtual table top.
       </div>
-      <div class="text-center text-2xl md:text-3xl text-white homepage-bold w-4/5 md:w-3/5 m-auto pb-10">
+      <div class="text-center sm:text-2xl md:text-1xl text-white homepage-bold w-4/5 md:w-3/5 m-auto pb-10">
           Compatible with Dungeons & Dragons® 5e, GURPS® and the soon to be released <span class="sd-font-orange">Sandragon System</span>
       </div>
       <!-- <carousel :per-page="1" autoplay="true" class="m-auto">
