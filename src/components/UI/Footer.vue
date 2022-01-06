@@ -4,8 +4,8 @@
       <div class="py-3 w-full md:w-3/5 mx-auto flex flex-col flex-col-reverse md:flex-row justify-around">
 
         <div class="flex flex-col">
-          <div class="flex flex-col justify-center text-left">
-            <p class="text-white mb-2 inline-block text-sm">
+          <div class="flex flex-col justify-center text-center md:text-left">
+            <p class="text-white mb-2 inline-block text-xs">
               <router-link to="/content" class=" pb-1 no-underline block">
                 CONTENT
               </router-link>
@@ -24,7 +24,7 @@
             </p>
           </div>
 
-          <div class="flex flex-row justify-left mb-0 mt-4 sd-font-light-blue">
+          <div class="flex flex-row justify-center md:justify-start mb-0 mt-4 sd-font-light-blue">
             <a href="https://twitter.com/sandragongame" target="_blank">
               <img src="https://www.sandragon.io/static/media/twitter.6d0df318.png" alt="Twitter" class=" sd-font-light-blue h-7 w-7 sd-font-orange mr-1">
             </a>
@@ -41,19 +41,19 @@
               <img src="https://www.sandragon.io/static/media/instagram.e8a1de67.png" alt="Instagram" class="h-7 w-7 sd-font-orange mx-1">
             </a>
           </div>
-          <p class="text-white mt-3 my-0 text-sm ">See what strange delights await...</p>
+          <p class="text-white mt-3 my-0 text-sm text-center md:text-left ">See what strange delights await...</p>
         </div>
 
-        <div class="flex flex-row justify-between">
+        <div class="flex flex-row justify-around md:justify-between pb-3 md:pb-0">
           <div class="flex flex-col justify-between">
-            <div class="mx-auto w-4/5 md:w-full text-right mb-2 rounded ">
-            <p class="sd-font-orange mb-2 inline-block ">Adventure calls!</p>
-              <form class="flex flex-row w-full rounded">
-                <input type="email" class="input border rounded p-1 w-full bg-white" style="border-radius:5px 0px 0px 5px;" id="email" placeholder="Email">
-                <button class="bg-sd-light-blue text-white py-1 px-4 " style="width: 200px; border-radius:0px 5px 5px 0px;">Join</button>
-              </form>
+            <div class="mx-auto w-full text-center md:text-right mb-2 rounded ">
+            <p class="sd-font-orange mb-2 inline-block">Adventure calls!</p>
+            <form class="flex flex-row w-full rounded">
+              <input type="email" class="input border rounded p-1 w-full bg-white" style="border-radius:5px 0px 0px 5px;" id="email" placeholder="Email">
+              <button class="bg-sd-light-blue text-white py-1 px-4 " style="width: 200px; border-radius:0px 5px 5px 0px;">Join</button>
+            </form>
             </div>
-            <div class="flex flex-col hidden md:show ">
+            <div class="flex flex-col">
               <img src="../../assets/sandragon_blue.png" class="m-auto pt-4 " style="width: 90px;">
             </div>
           </div>
