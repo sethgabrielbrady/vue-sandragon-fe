@@ -10,6 +10,24 @@ header, footer {
   background-color: #0F102F;
 }
 
+footer {
+  padding: 2em;
+  height: max-content;
+}
+
+/* md */
+@media only screen and (max-width: 768px) {
+  footer {
+    height: max-content;
+  }
+}
+/* sm */
+@media only screen and (max-width: 640px) {
+  /* footer {
+    height: 400px;
+  } */
+}
+
 .sd-dark-blue {
   color: #0F102F
 }
