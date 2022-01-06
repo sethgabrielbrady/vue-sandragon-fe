@@ -1,12 +1,16 @@
 <template>
-  <div style="width:100%;">
+  <div class="w-3/5 m-auto">
     <div class="items-center p-10">
-      <p>Account</p>
+      <p class="text-center">Account Edit</p>
       <p>{{ userName }}</p>
-      <img :src="this.$store.state.currentUser.image_url" class="w-40 h-40 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
       <form>
+        <img :src="this.$store.state.currentUser.image_url" class="w-40 h-40 ml-2 bg-gray-900 rounded inline-block ml-2 mr-1"/>
         <label class="block text-gray-700 text-sm font-bold mb-2 p-2" for="image">User Image</label>
         <input class="mb-4" type="file" name="image" ref="inputFile" @change=uploadFile()>
+        <div class="mb-6 w-2/5">
+          <label for="username" class="label">Update username</label>
+          <input type="username" v-model="username" class="input border rounded p-2 w-full" id="username" placeholder="username" required>
+        </div>
         <br>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click=createItem()>Upload</button>
       </form>
@@ -22,9 +26,8 @@ export default {
   data () {
     return {
       userPicture: null,
-      userName: "Default",
+      userName: this.$store.state.currentUser.username,
       userImage: null,
-      email: "",
       user: [],
       userId: this.$store.getters.currentUserId
     }
@@ -59,12 +62,11 @@ export default {
         this.$http.uploadFile.patch(`/users/${this.userId}`, formData)
       }
 
-      // this.$http.plain.patch(`/posts/${this.userId}`, {
-      //   user: {
-      //     userName: this.userName,
-      //     email: this.email
-      //   }
-      // })
+      this.$http.plain.patch(`/posts/${this.userId}`, {
+        user: {
+          userName: this.userName,
+        }
+      })
     },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
@@ -75,8 +77,7 @@ export default {
     updateUser () {
       this.$http.plain.patch(`/user/${this.userId}`, {
         user: {
-          userName: this.title,
-          email: this.body
+          userName: this.userName
         }
       })
     }

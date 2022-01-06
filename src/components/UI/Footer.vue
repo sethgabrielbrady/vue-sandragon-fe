@@ -15,7 +15,7 @@
               <a class=" no-underline inline-block py-1 cursor-pointer" @click="toggleContact">
                 CONTACT
               </a>
-              <router-link to="/privacy" class="py-1 no-underline block">
+              <router-link to="/privacy-policy" class="py-1 no-underline block">
                 PRIVACY
               </router-link>
               <router-link to="/terms" class="py-1 no-underline block">
