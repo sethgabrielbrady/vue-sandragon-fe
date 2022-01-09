@@ -3,6 +3,10 @@
     <h1 class="text-center p-4">Post Edit View for {{postId}}</h1>
     <div class="w-full max-w-5xl mx-auto">
       <button class="bg-green-500 text-white font-bold py-2 px-4 rounded" v-if="postId"  @click="setPostActive">Set Active</button>
+      <button
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block"
+        @click.prevent="removepost(post)">Delete
+      </button>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-6">
           <label for="title" class="label" />

@@ -6,32 +6,29 @@
         :key="post.id"
         :post="post">
 
-        <div class="flex items-center justify-between flex-wrap">
-          <img :src="post.image_url" class="mx-1 border" width="50%" height="auto" />
-          <p class="block flex-1 font-mono font-semibold flex items-center ">
-            {{ post.title }}<br>
-            by: {{ post.author }}<br>
-            id: {{ post.id }} <br>
-            date: {{ getDate(post.updated_at) }}<br>
-            slug: {{post.slug}}
-          </p>
-        </div>
-
-        <div class="flex flex-row justify-between flex-end py-2">
-          <button
-            @click="routeToEdit(post.id)"
-            class="mx-2 block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block"
-            v-if="signedIn()">
-            Edit
-          </button>
-          <button
-            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block"
-            @click="routeToPost(post.slug)">View
-          </button>
-          <button
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded block"
-            @click.prevent="removepost(post)">Delete
-          </button>
+        <div class="flex items-center justify-around flex-wrap w-3/5">
+          <img :src="post.image_url" class="mx-1 border" width="40%" height="auto" />
+          <div>
+            <p class="block flex-1 font-mono font-semibold flex items-center ">
+              {{ post.title }}<br>
+              by: {{ post.author }}<br>
+              id: {{ post.id }} <br>
+              date: {{ getDate(post.updated_at) }}<br>
+              slug: {{post.slug}}
+            </p>
+             <div class="flex flex-row py-2">
+              <button
+                @click="routeToEdit(post.id)"
+                class="mx-2 block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded block"
+                v-if="signedIn()">
+                Edit
+              </button>
+              <button
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded block"
+                @click="routeToPost(post.slug)">View
+              </button>
+            </div>
+          </div>
         </div>
         <hr class="border border-grey-light my-6" />
       </li>

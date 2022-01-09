@@ -12,7 +12,7 @@
 
           <div class="mb-6">
             <label for="title" class="label">Title</label><br>
-            <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title">
+            <input type="title" v-model="title" class="input border rounded p-2 w-full" id="title" ref="title" :placeholder="material.title" required>
           </div>
 
           <div class="mb-6">
@@ -27,7 +27,7 @@
 
           <div class="mb-6">
             <label for="slug" class="label">Slug</label><br>
-            <input type="title" v-model="slug" class="input border rounded p-2 w-full" id="body" :placeholder="material.slug" />
+            <input type="title" v-model="slug" class="input border rounded p-2 w-full" id="body" :placeholder="material.slug" required />
           </div>
 
           <div class="border-blue-500 border-2 mb-6">
